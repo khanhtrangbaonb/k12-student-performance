@@ -1,0 +1,29 @@
+# profiles.yml
+# -------------
+# Default target `dev` runs on DuckDB (local file, zero setup).
+# The `snowflake` target shows the exact same project running on a cloud
+# warehouse — swap with `dbt run --target snowflake` once creds are set.
+#
+# In production this file lives in ~/.dbt/profiles.yml (not in the repo).
+
+k12_student_performance:
+  target: dev
+  outputs:
+
+    dev:
+      type: duckdb
+      path: ../output/k12.duckdb
+      # read the generated raw CSVs as external sources
+      external_root: "../data/raw"
+      threads: 4
+
+    snowflake:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: TRANSFORMER
+      database: ANALYTICS
+      warehouse: TRANSFORMING
+      schema: K12_BI
+      threads: 8

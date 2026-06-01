@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_students
+    description: "Cleaned student dimension feed."
+    columns:
+      - name: student_id
+        tests: [unique, not_null]
+      - name: grade_level
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+              quote: false
+
+  - name: stg_schools
+    columns:
+      - name: school_id
+        tests: [unique, not_null]
+      - name: school_level
+        tests:
+          - accepted_values:
+              values: ['Elementary', 'Middle']
+
+  - name: stg_assessments
+    description: "Typed, labelled assessment results — grain: student / subject / window."
+    columns:
+      - name: result_id
+        tests: [unique, not_null]
+      - name: percentile_rank
+        tests:
+          - not_null
+      - name: benchmark_category
+        tests:
+          - accepted_values:
+              values: ['At/Above Benchmark', 'On Watch', 'Intervention', 'Urgent Intervention']
+      - name: scaled_score
+        tests:
+          - not_null

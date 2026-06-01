@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: dim_student
+    description: "Student dimension (one row per student)."
+    columns:
+      - name: student_id
+        tests: [unique, not_null]
+      - name: grade_label
+        tests: [not_null]
+
+  - name: dim_school
+    columns:
+      - name: school_id
+        tests: [unique, not_null]
+
+  - name: dim_subject
+    columns:
+      - name: subject_id
+        tests: [unique, not_null]
+
+  - name: dim_window
+    columns:
+      - name: window_id
+        tests: [unique, not_null]
+
+  - name: fct_assessment_results
+    description: "Assessment fact. Grain: student / subject / benchmark window."
+    columns:
+      - name: result_id
+        tests: [unique, not_null]
+      - name: student_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_student')
+              field: student_id
+      - name: school_id
+        tests:
+          - relationships:
+              to: ref('dim_school')
+              field: school_id
+      - name: subject_id
+        tests:
+          - relationships:
+              to: ref('dim_subject')
+              field: subject_id
+      - name: window_id
+        tests:
+          - relationships:
+              to: ref('dim_window')
+              field: window_id
+      - name: scaled_score
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1500

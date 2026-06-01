@@ -1,0 +1,24 @@
+name: 'k12_student_performance'
+version: '1.0.0'
+config-version: 2
+
+profile: 'k12_student_performance'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+models:
+  k12_student_performance:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+    reporting:
+      +materialized: table
+
+# Notes:
+# - This project runs locally on DuckDB (free, no warehouse needed) and is
+#   written to be portable to Snowflake with only a profiles.yml change.
+# - The star schema lives in `marts/` (dim_* and fct_*); curated BI tables
+#   that power the dashboard live in `reporting/` (rpt_*).

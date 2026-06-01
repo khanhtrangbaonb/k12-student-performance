@@ -1,0 +1,8 @@
+school_id,school_name,district_id,district_name,school_level
+S001,Maple Grove Elementary,D01,Riverside Unified,Elementary
+S002,Oak Ridge Elementary,D01,Riverside Unified,Elementary
+S003,Riverside Middle,D01,Riverside Unified,Middle
+S004,Birchwood Elementary,D02,Lakewood Public,Elementary
+S005,Lakewood Middle,D02,Lakewood Public,Middle
+S006,Cedar Point Elementary,D03,Hillcrest Community,Elementary
+S007,Hillcrest Middle,D03,Hillcrest Community,Middle

@@ -1,0 +1,462 @@
+student_id,student_name,grade_label,district_name,school_name,subject_id,spring_score,spring_pr,benchmark_category,scaled_growth,growth_flag,is_ell,has_iep,is_frl,priority_score
+STU00011,Kai Wilson,1,Riverside Unified,Maple Grove Elementary,SUBJ_R,198.9,20,Intervention,86.1,Strong Growth,True,True,False,30
+STU00018,Morgan Lopez,3,Riverside Unified,Maple Grove Elementary,SUBJ_R,86.9,1,Urgent Intervention,-65.5,Declining,False,True,True,74
+STU00020,Quinn Khan,5,Riverside Unified,Maple Grove Elementary,SUBJ_R,548.0,24,Intervention,49.1,Strong Growth,False,True,False,26
+STU00023,Finley Anderson,K,Riverside Unified,Maple Grove Elementary,SUBJ_R,91.7,18,Intervention,-137.4,Declining,True,False,True,57
+STU00056,Skyler Lee,4,Riverside Unified,Maple Grove Elementary,SUBJ_R,334.7,12,Intervention,-49.0,Declining,False,False,False,53
+STU00069,Casey Hill,1,Riverside Unified,Maple Grove Elementary,SUBJ_M,105.1,16,Intervention,-79.7,Declining,False,False,False,49
+STU00080,Sage Patel,5,Riverside Unified,Maple Grove Elementary,SUBJ_M,604.4,22,Intervention,-117.1,Declining,False,False,False,43
+STU00084,Reese Martinez,4,Riverside Unified,Maple Grove Elementary,SUBJ_R,428.3,23,Intervention,-9.5,Declining,False,False,True,52
+STU00095,Jamie Young,K,Riverside Unified,Maple Grove Elementary,SUBJ_M,50.0,23,Intervention,0.0,Flat,False,False,True,27
+STU00113,Jamie Anderson,5,Riverside Unified,Maple Grove Elementary,SUBJ_M,499.5,18,Intervention,-75.4,Declining,True,False,True,57
+STU00116,Jordan Brown,3,Riverside Unified,Maple Grove Elementary,SUBJ_M,360.1,19,Intervention,63.7,Strong Growth,True,False,False,31
+STU00118,Riley Anderson,5,Riverside Unified,Maple Grove Elementary,SUBJ_R,589.9,20,Intervention,-52.8,Declining,True,False,False,55
+STU00120,Emery Lopez,2,Riverside Unified,Maple Grove Elementary,SUBJ_R,234.2,17,Intervention,-91.1,Declining,False,False,True,58
+STU00121,Quinn Lee,K,Riverside Unified,Maple Grove Elementary,SUBJ_M,50.0,16,Intervention,0.0,Flat,True,False,False,34
+STU00128,Avery Kim,5,Riverside Unified,Maple Grove Elementary,SUBJ_R,466.1,8,Urgent Intervention,-97.6,Declining,False,False,False,57
+STU00141,Morgan Garcia,2,Riverside Unified,Maple Grove Elementary,SUBJ_R,184.0,5,Urgent Intervention,-49.7,Declining,False,True,False,70
+STU00143,Noa Wilson,1,Riverside Unified,Maple Grove Elementary,SUBJ_M,50.0,18,Intervention,0.0,Flat,False,False,False,22
+STU00147,Reese Patel,K,Riverside Unified,Maple Grove Elementary,SUBJ_R,96.5,18,Intervention,-95.2,Declining,False,False,True,57
+STU00148,Riley Hill,K,Riverside Unified,Maple Grove Elementary,SUBJ_R,106.4,23,Intervention,-4.3,Flat,True,False,False,52
+STU00152,Casey Wilson,3,Riverside Unified,Maple Grove Elementary,SUBJ_R,227.3,10,Intervention,-58.9,Declining,False,False,False,55
+STU00180,Logan Young,5,Riverside Unified,Maple Grove Elementary,SUBJ_M,460.5,22,Intervention,-14.2,Declining,True,False,False,53
+STU00185,Sage Anderson,K,Riverside Unified,Maple Grove Elementary,SUBJ_R,50.0,6,Urgent Intervention,-88.0,Declining,False,False,False,59
+STU00191,Skyler Chen,5,Riverside Unified,Maple Grove Elementary,SUBJ_R,573.1,23,Intervention,-54.2,Declining,False,False,False,42
+STU00197,Finley Chen,2,Riverside Unified,Maple Grove Elementary,SUBJ_R,250.0,24,Intervention,-11.9,Declining,False,False,False,41
+STU00202,Finley Smith,2,Riverside Unified,Maple Grove Elementary,SUBJ_R,89.1,1,Urgent Intervention,-76.7,Declining,False,False,True,74
+STU00210,Quinn Smith,1,Riverside Unified,Maple Grove Elementary,SUBJ_R,188.4,21,Intervention,-51.5,Declining,True,False,False,54
+STU00213,Logan Wilson,1,Riverside Unified,Maple Grove Elementary,SUBJ_M,204.0,23,Intervention,-108.2,Declining,True,False,False,52
+STU00215,Devon Davis,1,Riverside Unified,Maple Grove Elementary,SUBJ_R,181.4,18,Intervention,-23.6,Declining,False,True,True,57
+STU00217,Riley Hill,5,Riverside Unified,Maple Grove Elementary,SUBJ_M,362.9,1,Urgent Intervention,10.7,On Track,False,False,False,39
+STU00225,Casey Lopez,2,Riverside Unified,Maple Grove Elementary,SUBJ_R,175.7,19,Intervention,72.6,Strong Growth,True,False,True,31
+STU00229,Riley Johnson,2,Riverside Unified,Maple Grove Elementary,SUBJ_R,236.3,23,Intervention,-2.6,Flat,False,False,False,42
+STU00233,Casey Hill,1,Riverside Unified,Maple Grove Elementary,SUBJ_R,103.5,19,Intervention,-31.3,Declining,False,False,True,56
+STU00233,Casey Hill,1,Riverside Unified,Maple Grove Elementary,SUBJ_M,176.9,17,Intervention,-17.4,Declining,False,False,True,58
+STU00234,Rowan Davis,K,Riverside Unified,Maple Grove Elementary,SUBJ_M,50.0,18,Intervention,0.0,Flat,False,False,True,32
+STU00242,Parker Brown,2,Riverside Unified,Maple Grove Elementary,SUBJ_M,180.9,15,Intervention,-3.5,Flat,False,False,False,50
+STU00252,Devon Nguyen,3,Riverside Unified,Maple Grove Elementary,SUBJ_R,316.0,16,Intervention,-124.2,Declining,False,False,True,59
+STU00257,Micah Smith,4,Riverside Unified,Maple Grove Elementary,SUBJ_M,397.2,22,Intervention,22.9,On Track,False,False,False,18
+STU00265,Micah Anderson,3,Riverside Unified,Maple Grove Elementary,SUBJ_M,337.7,21,Intervention,-39.8,Declining,True,False,True,54
+STU00268,Noa Johnson,3,Riverside Unified,Maple Grove Elementary,SUBJ_M,185.6,13,Intervention,-29.7,Declining,False,True,True,62
+STU00271,Jordan Wilson,3,Riverside Unified,Maple Grove Elementary,SUBJ_M,307.9,10,Intervention,89.2,Strong Growth,False,False,True,40
+STU00285,Micah Chen,2,Riverside Unified,Maple Grove Elementary,SUBJ_M,139.6,4,Urgent Intervention,-49.9,Declining,False,True,True,71
+STU00296,Kai Garcia,5,Riverside Unified,Maple Grove Elementary,SUBJ_R,457.6,8,Urgent Intervention,5.6,Flat,False,False,True,42
+STU00306,Jordan Walker,K,Riverside Unified,Maple Grove Elementary,SUBJ_M,50.0,24,Intervention,-23.9,Declining,False,False,False,41
+STU00314,Noa Khan,3,Riverside Unified,Maple Grove Elementary,SUBJ_M,303.1,23,Intervention,117.5,Strong Growth,False,True,True,27
+STU00320,Parker Wilson,3,Riverside Unified,Maple Grove Elementary,SUBJ_M,309.2,21,Intervention,-72.2,Declining,False,False,False,44
+STU00322,Jordan Hill,1,Riverside Unified,Maple Grove Elementary,SUBJ_M,114.4,12,Intervention,64.4,Strong Growth,True,False,False,38
+STU00341,Skyler Young,1,Riverside Unified,Maple Grove Elementary,SUBJ_M,105.0,13,Intervention,24.9,On Track,False,False,False,27
+STU00348,Finley Walker,3,Riverside Unified,Maple Grove Elementary,SUBJ_R,363.0,18,Intervention,40.5,Strong Growth,False,False,False,22
+STU00349,Casey Walker,4,Riverside Unified,Maple Grove Elementary,SUBJ_R,471.6,20,Intervention,-84.5,Declining,False,False,False,45
+STU00354,Casey Davis,3,Riverside Unified,Maple Grove Elementary,SUBJ_R,313.4,18,Intervention,-85.3,Declining,False,False,True,57
+STU00368,Skyler Brown,2,Riverside Unified,Maple Grove Elementary,SUBJ_R,278.5,24,Intervention,88.0,Strong Growth,True,True,True,26
+STU00370,Riley Nguyen,2,Riverside Unified,Maple Grove Elementary,SUBJ_M,145.4,6,Urgent Intervention,30.0,Strong Growth,False,False,True,44
+STU00379,Avery Davis,1,Riverside Unified,Maple Grove Elementary,SUBJ_M,99.8,16,Intervention,-34.2,Declining,False,False,False,49
+STU00381,Devon Smith,3,Riverside Unified,Maple Grove Elementary,SUBJ_R,369.5,23,Intervention,-54.6,Declining,False,False,True,52
+STU00388,Finley Nguyen,2,Riverside Unified,Maple Grove Elementary,SUBJ_R,311.3,23,Intervention,-90.5,Declining,False,False,False,42
+STU00391,Noa Martinez,K,Riverside Unified,Maple Grove Elementary,SUBJ_R,50.0,24,Intervention,0.0,Flat,False,True,False,26
+STU00392,Riley Nguyen,K,Riverside Unified,Maple Grove Elementary,SUBJ_R,50.0,22,Intervention,0.0,Flat,False,False,False,18
+STU00401,Riley Brown,2,Riverside Unified,Maple Grove Elementary,SUBJ_R,200.0,15,Intervention,-49.2,Declining,False,False,False,50
+STU00417,Casey Kim,K,Riverside Unified,Maple Grove Elementary,SUBJ_R,100.5,21,Intervention,31.5,Strong Growth,False,False,True,29
+STU00432,Rowan Lopez,1,Riverside Unified,Oak Ridge Elementary,SUBJ_R,115.2,12,Intervention,65.2,Strong Growth,False,False,True,38
+STU00439,Noa Lee,3,Riverside Unified,Oak Ridge Elementary,SUBJ_M,211.1,1,Urgent Intervention,-57.4,Declining,False,False,True,74
+STU00440,Skyler Smith,4,Riverside Unified,Oak Ridge Elementary,SUBJ_M,464.8,23,Intervention,52.2,Strong Growth,False,True,False,27
+STU00442,Riley Garcia,1,Riverside Unified,Oak Ridge Elementary,SUBJ_M,50.0,10,Intervention,-11.6,Declining,False,False,False,55
+STU00446,Micah Wilson,3,Riverside Unified,Oak Ridge Elementary,SUBJ_R,394.5,22,Intervention,-22.6,Declining,False,False,False,43
+STU00452,Parker Patel,K,Riverside Unified,Oak Ridge Elementary,SUBJ_R,74.7,14,Intervention,-63.6,Declining,False,False,True,61
+STU00457,Emery Rivera,K,Riverside Unified,Oak Ridge Elementary,SUBJ_R,128.4,19,Intervention,78.4,Strong Growth,False,True,True,31
+STU00474,Emery Martinez,2,Riverside Unified,Oak Ridge Elementary,SUBJ_R,283.1,19,Intervention,-30.2,Declining,True,False,False,56
+STU00474,Emery Martinez,2,Riverside Unified,Oak Ridge Elementary,SUBJ_M,223.8,19,Intervention,-114.3,Declining,True,False,False,56
+STU00478,Noa Wilson,5,Riverside Unified,Oak Ridge Elementary,SUBJ_M,588.7,24,Intervention,-103.8,Declining,False,False,True,51
+STU00490,Casey Young,4,Riverside Unified,Oak Ridge Elementary,SUBJ_R,459.0,19,Intervention,-68.6,Declining,False,False,False,46
+STU00500,Sage Rivera,K,Riverside Unified,Oak Ridge Elementary,SUBJ_M,64.5,24,Intervention,14.5,On Track,False,False,True,26
+STU00501,Morgan Nguyen,5,Riverside Unified,Oak Ridge Elementary,SUBJ_M,515.9,18,Intervention,-17.2,Declining,True,False,False,57
+STU00508,Sage Brown,1,Riverside Unified,Oak Ridge Elementary,SUBJ_M,50.0,10,Intervention,0.0,Flat,True,False,False,40
+STU00517,Devon Anderson,3,Riverside Unified,Oak Ridge Elementary,SUBJ_M,399.4,15,Intervention,61.6,Strong Growth,False,False,True,35
+STU00518,Kai Patel,K,Riverside Unified,Oak Ridge Elementary,SUBJ_R,50.0,14,Intervention,-91.0,Declining,False,True,False,61
+STU00519,Devon Anderson,4,Riverside Unified,Oak Ridge Elementary,SUBJ_R,403.7,20,Intervention,-79.6,Declining,False,False,False,45
+STU00520,Quinn Young,2,Riverside Unified,Oak Ridge Elementary,SUBJ_M,161.9,18,Intervention,32.9,Strong Growth,False,False,True,32
+STU00521,Rowan Thomas,5,Riverside Unified,Oak Ridge Elementary,SUBJ_R,485.2,11,Intervention,-78.0,Declining,True,False,True,64
+STU00530,Finley Khan,3,Riverside Unified,Oak Ridge Elementary,SUBJ_R,393.3,22,Intervention,96.9,Strong Growth,False,False,True,28
+STU00538,Kai Lee,5,Riverside Unified,Oak Ridge Elementary,SUBJ_R,385.8,1,Urgent Intervention,21.9,On Track,True,True,True,49
+STU00539,Noa Smith,4,Riverside Unified,Oak Ridge Elementary,SUBJ_R,572.0,23,Intervention,-39.6,Declining,True,False,True,52
+STU00543,Quinn Khan,4,Riverside Unified,Oak Ridge Elementary,SUBJ_M,378.3,12,Intervention,139.2,Strong Growth,True,False,True,38
+STU00549,Quinn Walker,3,Riverside Unified,Oak Ridge Elementary,SUBJ_M,343.1,21,Intervention,30.2,Strong Growth,True,False,True,29
+STU00559,Rowan Lopez,K,Riverside Unified,Oak Ridge Elementary,SUBJ_R,50.0,20,Intervention,0.0,Flat,False,False,False,20
+STU00593,Riley Chen,K,Riverside Unified,Oak Ridge Elementary,SUBJ_M,50.6,22,Intervention,0.6,Flat,True,True,False,28
+STU00609,Emery Martinez,4,Riverside Unified,Oak Ridge Elementary,SUBJ_R,499.9,23,Intervention,-42.6,Declining,False,False,True,52
+STU00610,Micah Nguyen,4,Riverside Unified,Oak Ridge Elementary,SUBJ_M,388.0,17,Intervention,67.0,Strong Growth,True,False,True,33
+STU00616,Harper Wilson,2,Riverside Unified,Oak Ridge Elementary,SUBJ_M,258.5,21,Intervention,-54.1,Declining,False,False,False,44
+STU00618,Morgan Khan,1,Riverside Unified,Oak Ridge Elementary,SUBJ_M,183.0,24,Intervention,31.1,Strong Growth,True,True,False,26
+STU00629,Parker Anderson,K,Riverside Unified,Oak Ridge Elementary,SUBJ_M,50.0,23,Intervention,0.0,Flat,False,True,False,27
+STU00635,Jamie Rivera,1,Riverside Unified,Oak Ridge Elementary,SUBJ_M,175.1,20,Intervention,16.8,On Track,False,True,False,30
+STU00640,Micah Rivera,5,Riverside Unified,Oak Ridge Elementary,SUBJ_M,488.0,11,Intervention,-8.4,Declining,False,False,False,54
+STU00646,Casey Smith,1,Riverside Unified,Oak Ridge Elementary,SUBJ_R,50.0,7,Urgent Intervention,-4.1,Flat,False,False,True,68
+STU00647,Emery Kim,K,Riverside Unified,Oak Ridge Elementary,SUBJ_R,50.0,11,Intervention,0.0,Flat,False,False,False,29
+STU00663,Avery Smith,4,Riverside Unified,Oak Ridge Elementary,SUBJ_M,318.9,5,Urgent Intervention,138.1,Strong Growth,True,False,True,45
+STU00667,Harper Brown,1,Riverside Unified,Oak Ridge Elementary,SUBJ_R,110.9,4,Urgent Intervention,-156.5,Declining,False,True,True,71
+STU00674,Rowan Wilson,K,Riverside Unified,Oak Ridge Elementary,SUBJ_R,50.0,18,Intervention,0.0,Flat,True,False,True,32
+STU00676,Reese Rivera,2,Riverside Unified,Oak Ridge Elementary,SUBJ_M,113.6,12,Intervention,-89.8,Declining,False,False,False,53
+STU00685,Jordan Lopez,2,Riverside Unified,Oak Ridge Elementary,SUBJ_M,110.4,14,Intervention,16.1,On Track,False,False,True,36
+STU00692,Quinn Patel,3,Riverside Unified,Oak Ridge Elementary,SUBJ_M,306.8,15,Intervention,78.3,Strong Growth,False,True,True,35
+STU00723,Riley Hill,3,Riverside Unified,Oak Ridge Elementary,SUBJ_R,340.4,17,Intervention,-68.1,Declining,True,False,True,58
+STU00727,Skyler Nguyen,5,Riverside Unified,Oak Ridge Elementary,SUBJ_R,582.9,23,Intervention,85.3,Strong Growth,True,False,True,27
+STU00730,Quinn Kim,1,Riverside Unified,Oak Ridge Elementary,SUBJ_M,133.3,21,Intervention,-33.9,Declining,False,True,False,54
+STU00731,Emery Anderson,1,Riverside Unified,Oak Ridge Elementary,SUBJ_R,95.3,7,Urgent Intervention,44.8,Strong Growth,True,False,True,43
+STU00733,Harper Thomas,2,Riverside Unified,Oak Ridge Elementary,SUBJ_M,103.5,15,Intervention,3.7,Flat,False,False,True,35
+STU00742,Rowan Anderson,3,Riverside Unified,Oak Ridge Elementary,SUBJ_M,221.7,13,Intervention,57.5,Strong Growth,True,False,True,37
+STU00743,Quinn Kim,2,Riverside Unified,Oak Ridge Elementary,SUBJ_R,239.6,18,Intervention,42.6,Strong Growth,False,False,False,22
+STU00748,Sage Lee,5,Riverside Unified,Oak Ridge Elementary,SUBJ_M,509.3,24,Intervention,-71.6,Declining,False,False,True,51
+STU00749,Kai Lopez,2,Riverside Unified,Oak Ridge Elementary,SUBJ_R,276.2,23,Intervention,-52.8,Declining,False,False,True,52
+STU00756,Sage Martinez,2,Riverside Unified,Oak Ridge Elementary,SUBJ_M,124.0,1,Urgent Intervention,35.5,Strong Growth,True,False,True,49
+STU00757,Sage Patel,4,Riverside Unified,Oak Ridge Elementary,SUBJ_M,386.4,13,Intervention,50.0,Strong Growth,False,False,True,37
+STU00764,Jordan Walker,3,Riverside Unified,Oak Ridge Elementary,SUBJ_M,321.1,13,Intervention,-95.4,Declining,True,False,False,62
+STU00766,Emery Davis,3,Riverside Unified,Oak Ridge Elementary,SUBJ_M,233.7,16,Intervention,-72.1,Declining,False,False,True,59
+STU00773,Micah Lopez,2,Riverside Unified,Oak Ridge Elementary,SUBJ_M,265.5,21,Intervention,69.0,Strong Growth,False,False,True,29
+STU00783,Jamie Johnson,1,Riverside Unified,Oak Ridge Elementary,SUBJ_M,75.5,19,Intervention,-84.9,Declining,True,True,False,56
+STU00799,Reese Lee,K,Riverside Unified,Oak Ridge Elementary,SUBJ_R,101.5,24,Intervention,-76.9,Declining,False,False,True,51
+STU00800,Emery Davis,1,Riverside Unified,Oak Ridge Elementary,SUBJ_R,167.8,17,Intervention,-41.2,Declining,False,False,False,48
+STU00800,Emery Davis,1,Riverside Unified,Oak Ridge Elementary,SUBJ_M,133.4,13,Intervention,-79.3,Declining,False,False,False,52
+STU00821,Reese Rivera,8,Riverside Unified,Riverside Middle,SUBJ_R,851.9,23,Intervention,33.1,Strong Growth,True,True,True,27
+STU00826,Jamie Smith,7,Riverside Unified,Riverside Middle,SUBJ_R,661.0,14,Intervention,-48.9,Declining,True,True,False,61
+STU00826,Jamie Smith,7,Riverside Unified,Riverside Middle,SUBJ_M,787.4,24,Intervention,-86.2,Declining,True,True,False,51
+STU00827,Sage Smith,8,Riverside Unified,Riverside Middle,SUBJ_M,633.8,1,Urgent Intervention,-124.8,Declining,False,False,False,64
+STU00845,Sage Davis,6,Riverside Unified,Riverside Middle,SUBJ_M,469.4,1,Urgent Intervention,-28.3,Declining,False,False,True,74
+STU00847,Riley Thomas,8,Riverside Unified,Riverside Middle,SUBJ_R,817.1,18,Intervention,-39.2,Declining,False,True,False,57
+STU00848,Sage Johnson,7,Riverside Unified,Riverside Middle,SUBJ_M,719.0,16,Intervention,-153.6,Declining,False,False,True,59
+STU00859,Riley Davis,7,Riverside Unified,Riverside Middle,SUBJ_M,702.3,23,Intervention,-5.8,Declining,False,False,True,52
+STU00870,Reese Lopez,6,Riverside Unified,Riverside Middle,SUBJ_R,596.0,15,Intervention,-59.3,Declining,False,False,False,50
+STU00871,Micah Johnson,8,Riverside Unified,Riverside Middle,SUBJ_R,863.2,20,Intervention,-42.4,Declining,True,False,True,55
+STU00891,Sage Garcia,6,Riverside Unified,Riverside Middle,SUBJ_M,544.0,17,Intervention,46.6,Strong Growth,False,False,True,33
+STU00898,Sage Anderson,6,Riverside Unified,Riverside Middle,SUBJ_M,560.8,19,Intervention,-159.2,Declining,False,False,False,46
+STU00901,Morgan Kim,7,Riverside Unified,Riverside Middle,SUBJ_R,703.8,21,Intervention,-3.6,Flat,False,False,True,54
+STU00902,Rowan Walker,8,Riverside Unified,Riverside Middle,SUBJ_R,850.6,17,Intervention,68.7,Strong Growth,False,False,True,33
+STU00915,Skyler Khan,7,Riverside Unified,Riverside Middle,SUBJ_M,639.3,18,Intervention,-6.8,Declining,True,False,True,57
+STU00917,Micah Hill,7,Riverside Unified,Riverside Middle,SUBJ_M,667.8,13,Intervention,-65.1,Declining,True,False,True,62
+STU00920,Emery Kim,6,Riverside Unified,Riverside Middle,SUBJ_R,515.2,10,Intervention,-39.4,Declining,False,False,True,65
+STU00920,Emery Kim,6,Riverside Unified,Riverside Middle,SUBJ_M,505.7,3,Urgent Intervention,-74.4,Declining,False,False,True,72
+STU00921,Casey Khan,7,Riverside Unified,Riverside Middle,SUBJ_M,685.5,18,Intervention,1.7,Flat,True,False,True,32
+STU00923,Skyler Patel,7,Riverside Unified,Riverside Middle,SUBJ_M,730.3,24,Intervention,-26.7,Declining,False,False,True,51
+STU00931,Noa Johnson,6,Riverside Unified,Riverside Middle,SUBJ_M,569.0,19,Intervention,-23.8,Declining,True,False,False,56
+STU00943,Devon Wilson,7,Riverside Unified,Riverside Middle,SUBJ_M,710.3,13,Intervention,-8.7,Declining,True,False,True,62
+STU00947,Sage Brown,6,Riverside Unified,Riverside Middle,SUBJ_R,592.4,11,Intervention,3.2,Flat,True,False,True,39
+STU00947,Sage Brown,6,Riverside Unified,Riverside Middle,SUBJ_M,564.7,20,Intervention,-91.1,Declining,True,False,True,55
+STU00956,Avery Chen,6,Riverside Unified,Riverside Middle,SUBJ_R,569.6,14,Intervention,-27.0,Declining,False,False,True,61
+STU00964,Finley Patel,8,Riverside Unified,Riverside Middle,SUBJ_R,789.7,12,Intervention,1.6,Flat,True,False,False,38
+STU00966,Parker Johnson,7,Riverside Unified,Riverside Middle,SUBJ_M,708.4,18,Intervention,-116.1,Declining,False,False,True,57
+STU00980,Jordan Rivera,6,Riverside Unified,Riverside Middle,SUBJ_M,509.3,14,Intervention,-22.9,Declining,False,False,False,51
+STU00982,Skyler Lopez,7,Riverside Unified,Riverside Middle,SUBJ_R,745.9,13,Intervention,-80.2,Declining,False,True,False,62
+STU00983,Morgan Anderson,6,Riverside Unified,Riverside Middle,SUBJ_R,620.2,21,Intervention,11.2,On Track,False,False,True,29
+STU00989,Jamie Kim,7,Riverside Unified,Riverside Middle,SUBJ_M,649.5,18,Intervention,-172.8,Declining,False,False,True,57
+STU00997,Reese Thomas,7,Riverside Unified,Riverside Middle,SUBJ_R,774.1,21,Intervention,-76.0,Declining,True,False,True,54
+STU01000,Devon Kim,6,Riverside Unified,Riverside Middle,SUBJ_R,646.9,9,Urgent Intervention,-107.7,Declining,False,True,True,66
+STU01006,Riley Hill,8,Riverside Unified,Riverside Middle,SUBJ_M,827.7,20,Intervention,-114.2,Declining,False,False,True,55
+STU01011,Micah Walker,6,Riverside Unified,Riverside Middle,SUBJ_R,664.2,21,Intervention,-43.2,Declining,False,False,False,44
+STU01013,Harper Walker,7,Riverside Unified,Riverside Middle,SUBJ_R,677.5,22,Intervention,19.0,On Track,False,False,True,28
+STU01014,Harper Lee,6,Riverside Unified,Riverside Middle,SUBJ_R,625.2,17,Intervention,27.4,On Track,False,True,False,33
+STU01022,Casey Davis,8,Riverside Unified,Riverside Middle,SUBJ_M,759.3,7,Urgent Intervention,-30.1,Declining,False,True,True,68
+STU01026,Sage Nguyen,6,Riverside Unified,Riverside Middle,SUBJ_M,633.0,23,Intervention,179.6,Strong Growth,False,False,False,17
+STU01028,Quinn Johnson,7,Riverside Unified,Riverside Middle,SUBJ_R,720.2,10,Intervention,93.7,Strong Growth,False,False,True,40
+STU01038,Harper Lee,6,Riverside Unified,Riverside Middle,SUBJ_R,660.4,24,Intervention,-119.7,Declining,False,False,True,51
+STU01038,Harper Lee,6,Riverside Unified,Riverside Middle,SUBJ_M,656.6,12,Intervention,65.7,Strong Growth,False,False,True,38
+STU01044,Parker Thomas,8,Riverside Unified,Riverside Middle,SUBJ_R,827.5,18,Intervention,-111.6,Declining,False,False,False,47
+STU01058,Sage Lee,8,Riverside Unified,Riverside Middle,SUBJ_M,636.3,1,Urgent Intervention,-109.2,Declining,False,False,True,74
+STU01064,Micah Patel,6,Riverside Unified,Riverside Middle,SUBJ_M,636.3,23,Intervention,-41.6,Declining,False,False,False,42
+STU01069,Casey Smith,6,Riverside Unified,Riverside Middle,SUBJ_M,458.2,1,Urgent Intervention,-13.8,Declining,False,False,True,74
+STU01072,Logan Wilson,6,Riverside Unified,Riverside Middle,SUBJ_R,703.9,22,Intervention,-82.0,Declining,False,True,False,53
+STU01077,Micah Patel,8,Riverside Unified,Riverside Middle,SUBJ_M,800.3,9,Urgent Intervention,57.5,Strong Growth,True,False,True,41
+STU01079,Avery Smith,6,Riverside Unified,Riverside Middle,SUBJ_R,710.7,24,Intervention,-122.1,Declining,False,False,True,51
+STU01081,Harper Anderson,6,Riverside Unified,Riverside Middle,SUBJ_R,700.1,24,Intervention,-90.7,Declining,False,True,True,51
+STU01084,Jordan Garcia,7,Riverside Unified,Riverside Middle,SUBJ_R,770.4,22,Intervention,-58.9,Declining,False,True,True,53
+STU01092,Jordan Smith,7,Riverside Unified,Riverside Middle,SUBJ_R,623.6,3,Urgent Intervention,-50.9,Declining,True,True,True,72
+STU01107,Jordan Young,7,Riverside Unified,Riverside Middle,SUBJ_M,743.7,19,Intervention,9.1,Flat,False,False,True,31
+STU01108,Avery Khan,6,Riverside Unified,Riverside Middle,SUBJ_M,553.2,23,Intervention,123.5,Strong Growth,True,False,False,27
+STU01109,Parker Khan,6,Riverside Unified,Riverside Middle,SUBJ_M,575.1,17,Intervention,-80.8,Declining,False,False,True,58
+STU01112,Emery Brown,8,Riverside Unified,Riverside Middle,SUBJ_M,809.6,19,Intervention,34.4,Strong Growth,False,False,False,21
+STU01121,Harper Nguyen,6,Riverside Unified,Riverside Middle,SUBJ_R,655.4,12,Intervention,-69.8,Declining,False,False,False,53
+STU01123,Rowan Wilson,7,Riverside Unified,Riverside Middle,SUBJ_R,763.0,17,Intervention,-124.3,Declining,False,False,False,48
+STU01125,Logan Anderson,7,Riverside Unified,Riverside Middle,SUBJ_R,684.9,17,Intervention,-75.0,Declining,False,False,True,58
+STU01126,Jamie Anderson,7,Riverside Unified,Riverside Middle,SUBJ_M,549.9,2,Urgent Intervention,-40.1,Declining,False,False,True,73
+STU01140,Devon Chen,8,Riverside Unified,Riverside Middle,SUBJ_R,760.9,5,Urgent Intervention,-79.8,Declining,False,True,True,70
+STU01150,Parker Patel,7,Riverside Unified,Riverside Middle,SUBJ_M,677.3,23,Intervention,-28.1,Declining,False,True,False,52
+STU01170,Noa Davis,6,Riverside Unified,Riverside Middle,SUBJ_R,622.6,17,Intervention,-24.6,Declining,True,False,False,58
+STU01171,Devon Smith,7,Riverside Unified,Riverside Middle,SUBJ_M,634.7,17,Intervention,-179.1,Declining,False,False,True,58
+STU01185,Casey Patel,8,Riverside Unified,Riverside Middle,SUBJ_R,710.3,6,Urgent Intervention,42.6,Strong Growth,False,False,False,34
+STU01186,Kai Patel,8,Riverside Unified,Riverside Middle,SUBJ_R,797.5,13,Intervention,-12.2,Declining,False,False,True,62
+STU01202,Finley Walker,6,Riverside Unified,Riverside Middle,SUBJ_M,582.6,10,Intervention,24.8,On Track,True,True,False,40
+STU01207,Reese Patel,7,Riverside Unified,Riverside Middle,SUBJ_R,812.3,14,Intervention,2.8,Flat,True,False,False,36
+STU01209,Finley Garcia,8,Riverside Unified,Riverside Middle,SUBJ_M,561.4,1,Urgent Intervention,-45.0,Declining,True,False,True,74
+STU01217,Reese Martinez,7,Riverside Unified,Riverside Middle,SUBJ_R,747.9,20,Intervention,-64.5,Declining,True,False,False,55
+STU01236,Harper Wilson,8,Riverside Unified,Riverside Middle,SUBJ_R,773.1,13,Intervention,75.0,Strong Growth,False,False,True,37
+STU01241,Harper Hill,7,Riverside Unified,Riverside Middle,SUBJ_M,687.7,20,Intervention,-60.0,Declining,True,False,False,55
+STU01260,Morgan Johnson,8,Riverside Unified,Riverside Middle,SUBJ_R,787.2,4,Urgent Intervention,-38.6,Declining,False,False,False,61
+STU01262,Avery Young,8,Riverside Unified,Riverside Middle,SUBJ_M,813.5,20,Intervention,87.9,Strong Growth,True,False,False,30
+STU01267,Devon Thomas,7,Riverside Unified,Riverside Middle,SUBJ_R,765.4,17,Intervention,63.1,Strong Growth,False,False,False,23
+STU01275,Jordan Kim,6,Riverside Unified,Riverside Middle,SUBJ_M,572.0,14,Intervention,99.5,Strong Growth,True,False,True,36
+STU01281,Harper Nguyen,6,Riverside Unified,Riverside Middle,SUBJ_M,627.4,19,Intervention,-84.5,Declining,False,False,False,46
+STU01286,Devon Davis,6,Riverside Unified,Riverside Middle,SUBJ_M,536.7,9,Urgent Intervention,-98.4,Declining,False,False,True,66
+STU01291,Quinn Anderson,6,Riverside Unified,Riverside Middle,SUBJ_R,611.1,3,Urgent Intervention,118.2,Strong Growth,False,True,True,47
+STU01295,Harper Walker,7,Riverside Unified,Riverside Middle,SUBJ_M,623.1,18,Intervention,5.2,Flat,False,True,False,32
+STU01299,Casey Anderson,8,Riverside Unified,Riverside Middle,SUBJ_M,816.5,20,Intervention,-6.2,Declining,False,True,False,55
+STU01300,Reese Khan,7,Riverside Unified,Riverside Middle,SUBJ_R,764.3,22,Intervention,65.0,Strong Growth,False,False,False,18
+STU01315,Skyler Walker,1,Lakewood Public,Birchwood Elementary,SUBJ_M,50.0,15,Intervention,0.0,Flat,False,False,True,35
+STU01317,Sage Brown,4,Lakewood Public,Birchwood Elementary,SUBJ_R,471.1,19,Intervention,30.3,Strong Growth,False,False,False,21
+STU01323,Noa Lopez,3,Lakewood Public,Birchwood Elementary,SUBJ_R,337.0,20,Intervention,-19.6,Declining,False,False,True,55
+STU01332,Jamie Nguyen,5,Lakewood Public,Birchwood Elementary,SUBJ_M,437.9,9,Urgent Intervention,-65.6,Declining,False,False,True,66
+STU01339,Harper Wilson,1,Lakewood Public,Birchwood Elementary,SUBJ_R,65.5,11,Intervention,15.5,On Track,False,False,True,39
+STU01344,Kai Smith,5,Lakewood Public,Birchwood Elementary,SUBJ_M,548.4,23,Intervention,2.4,Flat,False,False,True,27
+STU01354,Micah Khan,2,Lakewood Public,Birchwood Elementary,SUBJ_R,175.8,2,Urgent Intervention,-113.2,Declining,True,False,False,73
+STU01355,Devon Wilson,2,Lakewood Public,Birchwood Elementary,SUBJ_M,214.9,21,Intervention,-14.9,Declining,False,False,True,54
+STU01362,Devon Kim,5,Lakewood Public,Birchwood Elementary,SUBJ_R,488.2,12,Intervention,-151.6,Declining,False,True,False,63
+STU01369,Casey Smith,1,Lakewood Public,Birchwood Elementary,SUBJ_R,198.1,23,Intervention,-33.4,Declining,False,False,True,52
+STU01377,Noa Davis,K,Lakewood Public,Birchwood Elementary,SUBJ_R,50.0,22,Intervention,-29.2,Declining,False,True,True,53
+STU01377,Noa Davis,K,Lakewood Public,Birchwood Elementary,SUBJ_M,61.2,22,Intervention,11.2,On Track,False,True,True,28
+STU01382,Harper Kim,5,Lakewood Public,Birchwood Elementary,SUBJ_M,542.2,18,Intervention,46.8,Strong Growth,False,False,False,22
+STU01386,Casey Khan,2,Lakewood Public,Birchwood Elementary,SUBJ_R,132.9,3,Urgent Intervention,82.9,Strong Growth,False,False,True,47
+STU01393,Kai Hill,1,Lakewood Public,Birchwood Elementary,SUBJ_M,115.7,23,Intervention,-108.6,Declining,False,False,False,42
+STU01395,Devon Davis,2,Lakewood Public,Birchwood Elementary,SUBJ_R,352.3,24,Intervention,-25.5,Declining,False,False,False,41
+STU01410,Rowan Walker,3,Lakewood Public,Birchwood Elementary,SUBJ_M,348.3,19,Intervention,-19.9,Declining,False,False,True,56
+STU01428,Avery Khan,K,Lakewood Public,Birchwood Elementary,SUBJ_R,120.7,22,Intervention,-66.8,Declining,False,False,True,53
+STU01432,Parker Nguyen,K,Lakewood Public,Birchwood Elementary,SUBJ_R,77.4,24,Intervention,27.4,On Track,True,False,True,26
+STU01433,Finley Nguyen,K,Lakewood Public,Birchwood Elementary,SUBJ_R,100.3,23,Intervention,-122.0,Declining,False,False,True,52
+STU01442,Quinn Johnson,2,Lakewood Public,Birchwood Elementary,SUBJ_M,198.2,23,Intervention,24.5,On Track,True,False,True,27
+STU01458,Morgan Nguyen,3,Lakewood Public,Birchwood Elementary,SUBJ_R,315.6,9,Urgent Intervention,-83.6,Declining,False,False,True,66
+STU01460,Kai Martinez,1,Lakewood Public,Birchwood Elementary,SUBJ_R,116.0,14,Intervention,-62.4,Declining,False,False,False,51
+STU01466,Micah Khan,4,Lakewood Public,Birchwood Elementary,SUBJ_R,458.6,21,Intervention,58.7,Strong Growth,False,False,False,19
+STU01471,Logan Walker,3,Lakewood Public,Birchwood Elementary,SUBJ_R,352.5,19,Intervention,-132.6,Declining,False,True,True,56
+STU01475,Logan Johnson,5,Lakewood Public,Birchwood Elementary,SUBJ_M,522.1,18,Intervention,4.7,Flat,False,False,False,22
+STU01476,Casey Khan,3,Lakewood Public,Birchwood Elementary,SUBJ_R,343.4,18,Intervention,57.0,Strong Growth,False,False,True,32
+STU01480,Jordan Davis,3,Lakewood Public,Birchwood Elementary,SUBJ_M,181.3,1,Urgent Intervention,-108.1,Declining,True,False,True,74
+STU01496,Riley Young,2,Lakewood Public,Birchwood Elementary,SUBJ_R,173.0,4,Urgent Intervention,-19.5,Declining,True,False,True,71
+STU01500,Devon Johnson,K,Lakewood Public,Birchwood Elementary,SUBJ_R,50.0,18,Intervention,0.0,Flat,True,False,True,32
+STU01500,Devon Johnson,K,Lakewood Public,Birchwood Elementary,SUBJ_M,65.3,24,Intervention,-146.0,Declining,True,False,True,51
+STU01503,Jordan Rivera,K,Lakewood Public,Birchwood Elementary,SUBJ_M,56.4,19,Intervention,-8.5,Declining,False,False,False,46
+STU01514,Noa Garcia,5,Lakewood Public,Birchwood Elementary,SUBJ_M,489.0,21,Intervention,-94.6,Declining,False,False,False,44
+STU01531,Logan Thomas,1,Lakewood Public,Birchwood Elementary,SUBJ_M,50.0,8,Urgent Intervention,-52.3,Declining,False,True,True,67
+STU01537,Riley Lopez,1,Lakewood Public,Birchwood Elementary,SUBJ_M,147.1,23,Intervention,-81.6,Declining,True,False,False,52
+STU01546,Avery Wilson,5,Lakewood Public,Birchwood Elementary,SUBJ_M,367.3,1,Urgent Intervention,-45.7,Declining,True,False,True,74
+STU01548,Emery Walker,4,Lakewood Public,Birchwood Elementary,SUBJ_R,244.6,1,Urgent Intervention,-80.0,Declining,False,False,False,64
+STU01550,Sage Anderson,3,Lakewood Public,Birchwood Elementary,SUBJ_M,211.4,7,Urgent Intervention,-34.7,Declining,False,False,True,68
+STU01556,Reese Khan,4,Lakewood Public,Birchwood Elementary,SUBJ_M,345.8,13,Intervention,21.8,On Track,True,False,False,37
+STU01557,Quinn Young,2,Lakewood Public,Birchwood Elementary,SUBJ_M,50.0,1,Urgent Intervention,-62.7,Declining,False,False,True,74
+STU01565,Quinn Brown,1,Lakewood Public,Birchwood Elementary,SUBJ_R,130.7,12,Intervention,-9.5,Declining,False,False,False,53
+STU01567,Jordan Anderson,5,Lakewood Public,Birchwood Elementary,SUBJ_R,598.8,22,Intervention,18.0,On Track,False,False,True,28
+STU01572,Emery Hill,1,Lakewood Public,Birchwood Elementary,SUBJ_R,202.2,22,Intervention,-86.0,Declining,False,False,True,53
+STU01606,Emery Johnson,4,Lakewood Public,Birchwood Elementary,SUBJ_R,425.0,13,Intervention,-26.8,Declining,True,False,True,62
+STU01612,Kai Brown,5,Lakewood Public,Birchwood Elementary,SUBJ_R,371.8,1,Urgent Intervention,-17.4,Declining,False,True,True,74
+STU01615,Harper Anderson,K,Lakewood Public,Birchwood Elementary,SUBJ_R,50.0,16,Intervention,0.0,Flat,False,False,False,24
+STU01624,Jamie Hill,K,Lakewood Public,Birchwood Elementary,SUBJ_R,50.0,21,Intervention,-33.7,Declining,False,False,True,54
+STU01625,Riley Lee,K,Lakewood Public,Birchwood Elementary,SUBJ_R,126.7,23,Intervention,29.8,On Track,False,False,True,27
+STU01627,Kai Walker,1,Lakewood Public,Birchwood Elementary,SUBJ_R,170.8,19,Intervention,-116.7,Declining,True,False,True,56
+STU01627,Kai Walker,1,Lakewood Public,Birchwood Elementary,SUBJ_M,109.2,18,Intervention,56.6,Strong Growth,True,False,True,32
+STU01633,Avery Johnson,K,Lakewood Public,Birchwood Elementary,SUBJ_M,73.0,16,Intervention,23.0,On Track,False,False,False,24
+STU01656,Quinn Khan,3,Lakewood Public,Birchwood Elementary,SUBJ_R,352.4,23,Intervention,16.1,On Track,False,False,True,27
+STU01663,Noa Khan,6,Lakewood Public,Lakewood Middle,SUBJ_M,611.6,24,Intervention,-75.1,Declining,True,False,True,51
+STU01665,Emery Johnson,8,Lakewood Public,Lakewood Middle,SUBJ_R,830.2,23,Intervention,-89.0,Declining,False,False,True,52
+STU01672,Riley Kim,8,Lakewood Public,Lakewood Middle,SUBJ_R,755.1,1,Urgent Intervention,8.3,Flat,False,False,True,49
+STU01682,Sage Martinez,7,Lakewood Public,Lakewood Middle,SUBJ_R,766.4,23,Intervention,-61.6,Declining,False,False,True,52
+STU01685,Jamie Patel,8,Lakewood Public,Lakewood Middle,SUBJ_R,862.2,18,Intervention,-31.9,Declining,False,False,False,47
+STU01686,Sage Young,8,Lakewood Public,Lakewood Middle,SUBJ_R,864.1,23,Intervention,-95.0,Declining,True,False,False,52
+STU01696,Skyler Thomas,8,Lakewood Public,Lakewood Middle,SUBJ_M,719.8,23,Intervention,-58.4,Declining,False,False,True,52
+STU01697,Jordan Walker,7,Lakewood Public,Lakewood Middle,SUBJ_R,724.0,22,Intervention,-60.8,Declining,True,False,False,53
+STU01707,Noa Nguyen,7,Lakewood Public,Lakewood Middle,SUBJ_R,686.0,17,Intervention,-112.9,Declining,False,False,True,58
+STU01712,Jamie Brown,7,Lakewood Public,Lakewood Middle,SUBJ_M,713.1,14,Intervention,-144.0,Declining,False,False,False,51
+STU01718,Sage Khan,6,Lakewood Public,Lakewood Middle,SUBJ_M,543.9,8,Urgent Intervention,-28.7,Declining,False,False,True,67
+STU01720,Jordan Smith,8,Lakewood Public,Lakewood Middle,SUBJ_M,803.2,21,Intervention,30.7,Strong Growth,False,False,False,19
+STU01721,Micah Lopez,7,Lakewood Public,Lakewood Middle,SUBJ_R,715.4,19,Intervention,120.8,Strong Growth,True,False,True,31
+STU01727,Reese Thomas,7,Lakewood Public,Lakewood Middle,SUBJ_M,435.5,1,Urgent Intervention,-80.6,Declining,True,True,False,74
+STU01728,Rowan Patel,6,Lakewood Public,Lakewood Middle,SUBJ_M,568.5,18,Intervention,-35.9,Declining,False,False,True,57
+STU01731,Noa Chen,7,Lakewood Public,Lakewood Middle,SUBJ_M,696.7,19,Intervention,18.1,On Track,False,False,False,21
+STU01732,Logan Anderson,8,Lakewood Public,Lakewood Middle,SUBJ_R,779.5,10,Intervention,-98.7,Declining,False,True,False,65
+STU01732,Logan Anderson,8,Lakewood Public,Lakewood Middle,SUBJ_M,627.0,1,Urgent Intervention,-100.6,Declining,False,True,False,74
+STU01739,Harper Anderson,7,Lakewood Public,Lakewood Middle,SUBJ_R,554.3,1,Urgent Intervention,65.9,Strong Growth,True,False,False,49
+STU01739,Harper Anderson,7,Lakewood Public,Lakewood Middle,SUBJ_M,684.2,18,Intervention,-57.6,Declining,True,False,False,57
+STU01742,Finley Smith,7,Lakewood Public,Lakewood Middle,SUBJ_R,702.3,17,Intervention,16.6,On Track,True,True,False,33
+STU01752,Jamie Hill,6,Lakewood Public,Lakewood Middle,SUBJ_R,655.0,22,Intervention,-89.3,Declining,False,False,True,53
+STU01763,Casey Davis,6,Lakewood Public,Lakewood Middle,SUBJ_M,506.4,11,Intervention,65.2,Strong Growth,False,False,True,39
+STU01764,Morgan Davis,8,Lakewood Public,Lakewood Middle,SUBJ_M,723.0,4,Urgent Intervention,2.7,Flat,False,True,True,46
+STU01767,Kai Thomas,7,Lakewood Public,Lakewood Middle,SUBJ_M,690.8,20,Intervention,117.4,Strong Growth,False,True,False,30
+STU01775,Emery Walker,6,Lakewood Public,Lakewood Middle,SUBJ_M,544.8,17,Intervention,-67.7,Declining,False,True,False,58
+STU01776,Noa Kim,6,Lakewood Public,Lakewood Middle,SUBJ_R,487.2,1,Urgent Intervention,46.8,Strong Growth,False,False,False,39
+STU01777,Harper Davis,7,Lakewood Public,Lakewood Middle,SUBJ_M,783.9,23,Intervention,-18.5,Declining,False,False,False,42
+STU01778,Sage Rivera,6,Lakewood Public,Lakewood Middle,SUBJ_R,640.5,16,Intervention,-4.0,Flat,True,False,False,59
+STU01791,Reese Hill,7,Lakewood Public,Lakewood Middle,SUBJ_M,596.8,9,Urgent Intervention,-134.6,Declining,False,True,True,66
+STU01792,Rowan Thomas,8,Lakewood Public,Lakewood Middle,SUBJ_M,727.7,6,Urgent Intervention,66.3,Strong Growth,True,True,True,44
+STU01797,Casey Kim,7,Lakewood Public,Lakewood Middle,SUBJ_R,702.7,13,Intervention,127.6,Strong Growth,True,False,True,37
+STU01797,Casey Kim,7,Lakewood Public,Lakewood Middle,SUBJ_M,709.0,10,Intervention,41.9,Strong Growth,True,False,True,40
+STU01799,Noa Johnson,6,Lakewood Public,Lakewood Middle,SUBJ_R,566.1,8,Urgent Intervention,41.0,Strong Growth,True,False,False,42
+STU01802,Avery Lee,6,Lakewood Public,Lakewood Middle,SUBJ_R,703.5,21,Intervention,-94.7,Declining,False,False,True,54
+STU01825,Jamie Young,8,Lakewood Public,Lakewood Middle,SUBJ_R,811.9,13,Intervention,-7.4,Declining,False,False,False,52
+STU01832,Reese Young,7,Lakewood Public,Lakewood Middle,SUBJ_R,798.8,22,Intervention,-26.8,Declining,False,False,False,43
+STU01852,Skyler Anderson,6,Lakewood Public,Lakewood Middle,SUBJ_R,471.3,1,Urgent Intervention,-57.4,Declining,True,True,True,74
+STU01855,Harper Hill,7,Lakewood Public,Lakewood Middle,SUBJ_M,513.8,1,Urgent Intervention,41.0,Strong Growth,False,False,True,49
+STU01860,Rowan Khan,8,Lakewood Public,Lakewood Middle,SUBJ_R,733.1,9,Urgent Intervention,-116.0,Declining,True,True,True,66
+STU01863,Avery Patel,7,Lakewood Public,Lakewood Middle,SUBJ_M,612.5,9,Urgent Intervention,-131.2,Declining,False,False,True,66
+STU01871,Casey Lopez,6,Lakewood Public,Lakewood Middle,SUBJ_R,675.8,13,Intervention,77.3,Strong Growth,False,True,True,37
+STU01871,Casey Lopez,6,Lakewood Public,Lakewood Middle,SUBJ_M,630.3,21,Intervention,16.9,On Track,False,True,True,29
+STU01874,Rowan Anderson,7,Lakewood Public,Lakewood Middle,SUBJ_R,807.7,22,Intervention,106.8,Strong Growth,False,False,True,28
+STU01879,Micah Rivera,6,Lakewood Public,Lakewood Middle,SUBJ_R,607.2,22,Intervention,83.6,Strong Growth,False,True,True,28
+STU01891,Rowan Johnson,7,Lakewood Public,Lakewood Middle,SUBJ_M,560.5,1,Urgent Intervention,-54.1,Declining,False,False,False,64
+STU01894,Casey Smith,8,Lakewood Public,Lakewood Middle,SUBJ_R,853.1,24,Intervention,-23.5,Declining,False,False,True,51
+STU01905,Kai Thomas,6,Lakewood Public,Lakewood Middle,SUBJ_R,640.9,21,Intervention,14.9,On Track,True,False,True,29
+STU01915,Harper Smith,8,Lakewood Public,Lakewood Middle,SUBJ_M,729.0,8,Urgent Intervention,-36.9,Declining,False,True,True,67
+STU01924,Devon Davis,7,Lakewood Public,Lakewood Middle,SUBJ_R,776.6,13,Intervention,110.8,Strong Growth,True,False,True,37
+STU01926,Finley Smith,7,Lakewood Public,Lakewood Middle,SUBJ_R,698.8,17,Intervention,-103.2,Declining,True,False,False,58
+STU01944,Harper Walker,8,Lakewood Public,Lakewood Middle,SUBJ_R,816.2,17,Intervention,-63.2,Declining,False,False,True,58
+STU01945,Jordan Khan,6,Lakewood Public,Lakewood Middle,SUBJ_M,540.8,11,Intervention,41.2,Strong Growth,True,False,False,39
+STU01946,Devon Walker,6,Lakewood Public,Lakewood Middle,SUBJ_R,590.4,18,Intervention,7.2,Flat,False,False,True,32
+STU01950,Avery Johnson,6,Lakewood Public,Lakewood Middle,SUBJ_M,534.4,15,Intervention,-185.5,Declining,True,False,False,60
+STU01965,Reese Smith,6,Lakewood Public,Lakewood Middle,SUBJ_M,550.7,8,Urgent Intervention,22.9,On Track,False,False,True,42
+STU01977,Harper Rivera,6,Lakewood Public,Lakewood Middle,SUBJ_M,633.1,15,Intervention,148.4,Strong Growth,True,False,True,35
+STU01978,Finley Hill,8,Lakewood Public,Lakewood Middle,SUBJ_M,760.3,21,Intervention,65.3,Strong Growth,False,False,True,29
+STU01981,Quinn Nguyen,8,Lakewood Public,Lakewood Middle,SUBJ_M,819.6,22,Intervention,-37.1,Declining,False,False,False,43
+STU01987,Devon Rivera,7,Lakewood Public,Lakewood Middle,SUBJ_R,651.8,10,Intervention,55.9,Strong Growth,False,False,False,30
+STU01998,Devon Khan,7,Lakewood Public,Lakewood Middle,SUBJ_M,535.7,1,Urgent Intervention,-68.4,Declining,True,False,True,74
+STU02026,Devon Martinez,8,Lakewood Public,Lakewood Middle,SUBJ_R,790.9,19,Intervention,-3.8,Flat,False,False,False,46
+STU02027,Avery Khan,6,Lakewood Public,Lakewood Middle,SUBJ_M,578.1,17,Intervention,67.8,Strong Growth,True,True,True,33
+STU02033,Rowan Chen,8,Lakewood Public,Lakewood Middle,SUBJ_R,833.9,21,Intervention,-66.0,Declining,False,False,True,54
+STU02036,Skyler Wilson,6,Lakewood Public,Lakewood Middle,SUBJ_M,473.5,1,Urgent Intervention,16.5,On Track,False,True,True,49
+STU02041,Devon Brown,7,Lakewood Public,Lakewood Middle,SUBJ_R,683.7,15,Intervention,-96.3,Declining,False,True,True,60
+STU02052,Quinn Anderson,6,Lakewood Public,Lakewood Middle,SUBJ_M,605.3,24,Intervention,-8.4,Declining,True,False,True,51
+STU02058,Micah Smith,6,Lakewood Public,Lakewood Middle,SUBJ_R,648.7,15,Intervention,148.7,Strong Growth,False,True,False,35
+STU02061,Finley Young,8,Lakewood Public,Lakewood Middle,SUBJ_R,859.6,21,Intervention,36.8,Strong Growth,False,True,True,29
+STU02066,Skyler Patel,6,Lakewood Public,Lakewood Middle,SUBJ_M,550.8,11,Intervention,-42.2,Declining,False,False,False,54
+STU02069,Jordan Chen,8,Lakewood Public,Lakewood Middle,SUBJ_M,779.7,20,Intervention,57.5,Strong Growth,False,False,True,30
+STU02073,Logan Kim,8,Lakewood Public,Lakewood Middle,SUBJ_R,928.9,23,Intervention,-53.2,Declining,False,False,False,42
+STU02074,Kai Johnson,8,Lakewood Public,Lakewood Middle,SUBJ_R,815.4,15,Intervention,32.1,Strong Growth,False,False,False,25
+STU02075,Devon Lopez,7,Lakewood Public,Lakewood Middle,SUBJ_M,552.5,1,Urgent Intervention,9.7,Flat,True,True,False,49
+STU02078,Logan Garcia,8,Lakewood Public,Lakewood Middle,SUBJ_R,903.0,22,Intervention,67.4,Strong Growth,False,False,True,28
+STU02081,Skyler Garcia,6,Lakewood Public,Lakewood Middle,SUBJ_M,402.6,1,Urgent Intervention,-38.8,Declining,True,False,True,74
+STU02083,Parker Rivera,7,Lakewood Public,Lakewood Middle,SUBJ_M,628.4,10,Intervention,54.2,Strong Growth,False,True,True,40
+STU02089,Quinn Rivera,8,Lakewood Public,Lakewood Middle,SUBJ_R,812.5,21,Intervention,-103.7,Declining,False,False,False,44
+STU02096,Finley Nguyen,6,Lakewood Public,Lakewood Middle,SUBJ_M,596.7,14,Intervention,-103.4,Declining,False,True,False,61
+STU02097,Kai Lee,8,Lakewood Public,Lakewood Middle,SUBJ_M,777.2,21,Intervention,16.1,On Track,True,True,False,29
+STU02102,Jamie Patel,8,Lakewood Public,Lakewood Middle,SUBJ_R,810.8,18,Intervention,-71.3,Declining,False,False,False,47
+STU02131,Micah Chen,5,Hillcrest Community,Cedar Point Elementary,SUBJ_M,465.5,13,Intervention,-56.3,Declining,False,False,True,62
+STU02133,Sage Hill,4,Hillcrest Community,Cedar Point Elementary,SUBJ_M,471.9,21,Intervention,-59.4,Declining,False,False,True,54
+STU02136,Rowan Kim,2,Hillcrest Community,Cedar Point Elementary,SUBJ_M,267.3,18,Intervention,128.5,Strong Growth,False,False,True,32
+STU02143,Emery Hill,K,Hillcrest Community,Cedar Point Elementary,SUBJ_M,50.0,24,Intervention,0.0,Flat,False,True,False,26
+STU02153,Emery Walker,5,Hillcrest Community,Cedar Point Elementary,SUBJ_R,469.2,8,Urgent Intervention,130.0,Strong Growth,True,False,False,42
+STU02162,Kai Hill,4,Hillcrest Community,Cedar Point Elementary,SUBJ_M,394.0,24,Intervention,-3.8,Flat,False,True,True,51
+STU02170,Rowan Rivera,2,Hillcrest Community,Cedar Point Elementary,SUBJ_R,247.3,17,Intervention,30.1,Strong Growth,True,False,False,33
+STU02178,Jordan Smith,1,Hillcrest Community,Cedar Point Elementary,SUBJ_M,50.0,10,Intervention,-50.1,Declining,True,False,True,65
+STU02188,Parker Lee,3,Hillcrest Community,Cedar Point Elementary,SUBJ_M,364.5,20,Intervention,-57.0,Declining,False,False,True,55
+STU02192,Reese Smith,3,Hillcrest Community,Cedar Point Elementary,SUBJ_M,292.1,24,Intervention,-127.1,Declining,False,False,False,41
+STU02208,Harper Rivera,5,Hillcrest Community,Cedar Point Elementary,SUBJ_R,568.6,17,Intervention,100.5,Strong Growth,False,False,True,33
+STU02210,Emery Nguyen,K,Hillcrest Community,Cedar Point Elementary,SUBJ_M,51.3,21,Intervention,-39.4,Declining,False,False,False,44
+STU02211,Riley Kim,3,Hillcrest Community,Cedar Point Elementary,SUBJ_M,322.1,24,Intervention,-24.8,Declining,True,False,True,51
+STU02213,Sage Chen,K,Hillcrest Community,Cedar Point Elementary,SUBJ_M,64.7,24,Intervention,14.7,On Track,False,False,False,16
+STU02214,Jordan Kim,5,Hillcrest Community,Cedar Point Elementary,SUBJ_R,548.4,20,Intervention,-21.5,Declining,False,False,True,55
+STU02223,Emery Smith,2,Hillcrest Community,Cedar Point Elementary,SUBJ_R,205.2,13,Intervention,-33.5,Declining,True,False,True,62
+STU02227,Logan Kim,5,Hillcrest Community,Cedar Point Elementary,SUBJ_R,479.5,12,Intervention,-93.5,Declining,False,False,False,53
+STU02233,Noa Thomas,2,Hillcrest Community,Cedar Point Elementary,SUBJ_M,103.6,1,Urgent Intervention,36.5,Strong Growth,False,True,False,49
+STU02239,Devon Brown,3,Hillcrest Community,Cedar Point Elementary,SUBJ_M,401.3,22,Intervention,39.0,Strong Growth,False,False,False,18
+STU02244,Micah Lee,4,Hillcrest Community,Cedar Point Elementary,SUBJ_M,363.7,16,Intervention,-14.1,Declining,False,False,False,49
+STU02248,Skyler Hill,1,Hillcrest Community,Cedar Point Elementary,SUBJ_M,50.0,15,Intervention,-14.5,Declining,False,False,False,50
+STU02252,Avery Davis,K,Hillcrest Community,Cedar Point Elementary,SUBJ_R,50.0,17,Intervention,0.0,Flat,False,False,True,33
+STU02254,Skyler Rivera,3,Hillcrest Community,Cedar Point Elementary,SUBJ_M,290.1,8,Urgent Intervention,-128.8,Declining,True,False,True,67
+STU02261,Quinn Garcia,K,Hillcrest Community,Cedar Point Elementary,SUBJ_R,58.9,22,Intervention,8.9,Flat,False,False,True,28
+STU02265,Harper Davis,3,Hillcrest Community,Cedar Point Elementary,SUBJ_M,455.1,24,Intervention,47.6,Strong Growth,False,False,True,26
+STU02266,Skyler Rivera,4,Hillcrest Community,Cedar Point Elementary,SUBJ_R,308.6,4,Urgent Intervention,-109.5,Declining,False,False,True,71
+STU02267,Jordan Anderson,5,Hillcrest Community,Cedar Point Elementary,SUBJ_M,434.8,11,Intervention,-52.9,Declining,False,True,True,64
+STU02269,Reese Brown,3,Hillcrest Community,Cedar Point Elementary,SUBJ_R,192.2,1,Urgent Intervention,0.8,Flat,False,False,True,49
+STU02301,Riley Thomas,1,Hillcrest Community,Cedar Point Elementary,SUBJ_M,104.4,12,Intervention,25.7,On Track,False,False,True,38
+STU02305,Riley Kim,2,Hillcrest Community,Cedar Point Elementary,SUBJ_R,289.0,23,Intervention,135.7,Strong Growth,False,True,False,27
+STU02314,Harper Nguyen,4,Hillcrest Community,Cedar Point Elementary,SUBJ_M,383.1,17,Intervention,41.1,Strong Growth,True,True,False,33
+STU02320,Jordan Rivera,5,Hillcrest Community,Cedar Point Elementary,SUBJ_M,491.2,21,Intervention,-145.9,Declining,False,False,True,54
+STU02322,Riley Smith,3,Hillcrest Community,Cedar Point Elementary,SUBJ_R,247.9,1,Urgent Intervention,-47.1,Declining,False,False,False,64
+STU02324,Skyler Nguyen,4,Hillcrest Community,Cedar Point Elementary,SUBJ_R,450.0,21,Intervention,-119.6,Declining,False,True,False,54
+STU02324,Skyler Nguyen,4,Hillcrest Community,Cedar Point Elementary,SUBJ_M,417.0,24,Intervention,-26.1,Declining,False,True,False,51
+STU02328,Quinn Anderson,1,Hillcrest Community,Cedar Point Elementary,SUBJ_R,228.5,18,Intervention,68.2,Strong Growth,False,True,True,32
+STU02330,Reese Khan,1,Hillcrest Community,Cedar Point Elementary,SUBJ_R,136.8,22,Intervention,-5.3,Declining,True,False,True,53
+STU02342,Logan Rivera,K,Hillcrest Community,Cedar Point Elementary,SUBJ_R,86.5,21,Intervention,-27.6,Declining,False,False,True,54
+STU02374,Casey Smith,3,Hillcrest Community,Cedar Point Elementary,SUBJ_M,259.8,12,Intervention,14.2,On Track,False,False,True,38
+STU02392,Devon Rivera,5,Hillcrest Community,Cedar Point Elementary,SUBJ_R,526.6,13,Intervention,-60.2,Declining,False,False,False,52
+STU02393,Rowan Martinez,2,Hillcrest Community,Cedar Point Elementary,SUBJ_M,183.4,15,Intervention,-49.4,Declining,True,True,True,60
+STU02400,Logan Lee,1,Hillcrest Community,Cedar Point Elementary,SUBJ_R,131.8,22,Intervention,-90.9,Declining,False,True,True,53
+STU02402,Noa Brown,K,Hillcrest Community,Cedar Point Elementary,SUBJ_M,50.0,17,Intervention,-49.0,Declining,False,False,False,48
+STU02404,Finley Wilson,2,Hillcrest Community,Cedar Point Elementary,SUBJ_R,269.3,22,Intervention,58.4,Strong Growth,False,False,False,18
+STU02405,Harper Patel,2,Hillcrest Community,Cedar Point Elementary,SUBJ_R,199.9,9,Urgent Intervention,-81.2,Declining,False,False,False,56
+STU02411,Avery Lopez,K,Hillcrest Community,Cedar Point Elementary,SUBJ_R,109.6,20,Intervention,59.6,Strong Growth,True,False,True,30
+STU02412,Finley Johnson,2,Hillcrest Community,Cedar Point Elementary,SUBJ_M,188.3,14,Intervention,-111.0,Declining,False,False,True,61
+STU02414,Harper Walker,2,Hillcrest Community,Cedar Point Elementary,SUBJ_M,269.7,22,Intervention,36.3,Strong Growth,False,False,False,18
+STU02422,Kai Lopez,4,Hillcrest Community,Cedar Point Elementary,SUBJ_R,453.4,21,Intervention,65.5,Strong Growth,False,True,True,29
+STU02422,Kai Lopez,4,Hillcrest Community,Cedar Point Elementary,SUBJ_M,395.2,17,Intervention,-15.3,Declining,False,True,True,58
+STU02425,Sage Kim,2,Hillcrest Community,Cedar Point Elementary,SUBJ_M,210.2,22,Intervention,106.8,Strong Growth,False,True,False,28
+STU02430,Finley Johnson,3,Hillcrest Community,Cedar Point Elementary,SUBJ_M,310.9,19,Intervention,86.1,Strong Growth,False,False,True,31
+STU02431,Morgan Walker,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,798.4,19,Intervention,-16.0,Declining,False,False,True,56
+STU02438,Sage Garcia,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,542.0,17,Intervention,34.6,Strong Growth,False,False,True,33
+STU02444,Micah Lopez,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,683.2,21,Intervention,-18.8,Declining,True,False,True,54
+STU02445,Devon Nguyen,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,555.8,12,Intervention,77.2,Strong Growth,False,False,True,38
+STU02448,Avery Martinez,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,605.1,10,Intervention,-43.5,Declining,False,False,True,65
+STU02450,Harper Thomas,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,334.3,1,Urgent Intervention,-104.8,Declining,True,True,True,74
+STU02454,Emery Chen,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,580.5,23,Intervention,-21.0,Declining,False,False,True,52
+STU02468,Parker Walker,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,828.4,23,Intervention,-40.5,Declining,True,False,False,52
+STU02502,Micah Young,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,660.6,15,Intervention,-66.6,Declining,False,False,True,60
+STU02506,Skyler Johnson,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,523.8,1,Urgent Intervention,-145.4,Declining,False,False,False,64
+STU02509,Morgan Wilson,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,577.2,15,Intervention,11.0,On Track,False,False,False,25
+STU02511,Avery Patel,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,679.6,12,Intervention,143.8,Strong Growth,False,False,True,38
+STU02516,Logan Chen,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,619.1,17,Intervention,-36.2,Declining,False,False,True,58
+STU02529,Jordan Garcia,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,806.0,19,Intervention,-8.4,Declining,False,False,True,56
+STU02537,Noa Chen,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,759.5,18,Intervention,10.0,On Track,False,False,False,22
+STU02543,Quinn Smith,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,644.9,24,Intervention,-22.2,Declining,False,False,True,51
+STU02544,Riley Hill,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,844.1,23,Intervention,-63.1,Declining,False,False,True,52
+STU02550,Kai Khan,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,668.5,22,Intervention,-93.5,Declining,False,False,False,43
+STU02551,Devon Kim,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,789.7,7,Urgent Intervention,-95.2,Declining,False,False,True,68
+STU02553,Noa Rivera,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,807.4,23,Intervention,33.1,Strong Growth,False,False,False,17
+STU02556,Emery Chen,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,757.9,23,Intervention,-87.8,Declining,True,False,True,52
+STU02564,Avery Kim,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,813.6,20,Intervention,-122.0,Declining,False,True,True,55
+STU02565,Noa Wilson,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,687.0,18,Intervention,-17.2,Declining,False,False,True,57
+STU02571,Sage Martinez,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,655.5,17,Intervention,3.1,Flat,False,False,True,33
+STU02580,Emery Johnson,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,754.0,23,Intervention,-117.4,Declining,False,False,False,42
+STU02581,Jordan Johnson,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,587.4,20,Intervention,93.2,Strong Growth,False,False,False,20
+STU02583,Noa Hill,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,735.2,20,Intervention,60.9,Strong Growth,False,True,False,30
+STU02587,Parker Nguyen,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,513.9,5,Urgent Intervention,-36.6,Declining,True,False,False,70
+STU02591,Finley Thomas,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,686.7,22,Intervention,-33.1,Declining,True,False,False,53
+STU02599,Devon Davis,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,685.7,23,Intervention,-17.8,Declining,False,False,True,52
+STU02599,Devon Davis,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,579.3,24,Intervention,14.3,On Track,False,False,True,26
+STU02601,Parker Rivera,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,751.3,17,Intervention,-54.9,Declining,False,False,True,58
+STU02602,Kai Kim,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,654.3,21,Intervention,-42.0,Declining,False,False,True,54
+STU02614,Logan Young,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,693.9,8,Urgent Intervention,-62.6,Declining,False,False,True,67
+STU02616,Emery Smith,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,877.3,19,Intervention,-58.3,Declining,False,False,True,56
+STU02623,Reese Thomas,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,784.5,12,Intervention,-79.6,Declining,False,False,True,63
+STU02626,Noa Brown,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,897.4,24,Intervention,60.2,Strong Growth,False,False,True,26
+STU02628,Avery Khan,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,735.1,23,Intervention,-91.0,Declining,False,True,False,52
+STU02631,Harper Martinez,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,872.7,24,Intervention,25.0,On Track,False,False,True,26
+STU02647,Logan Lee,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,757.4,12,Intervention,-92.1,Declining,True,False,True,63
+STU02648,Harper Lopez,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,787.2,24,Intervention,-67.9,Declining,False,False,False,41
+STU02649,Jamie Garcia,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,743.5,24,Intervention,-87.5,Declining,True,False,False,51
+STU02651,Morgan Brown,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,635.2,3,Urgent Intervention,-56.1,Declining,True,False,False,72
+STU02652,Skyler Lopez,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,690.8,15,Intervention,-40.6,Declining,False,False,True,60
+STU02654,Finley Rivera,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,647.3,23,Intervention,-43.9,Declining,True,False,True,52
+STU02663,Jamie Martinez,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,625.6,17,Intervention,-6.2,Declining,True,False,True,58
+STU02679,Sage Brown,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,478.0,1,Urgent Intervention,-45.8,Declining,True,False,False,74
+STU02682,Kai Brown,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,679.1,14,Intervention,-129.0,Declining,False,False,True,61
+STU02686,Jamie Johnson,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,690.3,19,Intervention,24.9,On Track,False,False,True,31
+STU02692,Avery Thomas,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,592.9,1,Urgent Intervention,-35.2,Declining,True,False,False,74
+STU02733,Quinn Thomas,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,788.4,24,Intervention,-47.6,Declining,False,False,True,51
+STU02740,Morgan Anderson,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,524.0,10,Intervention,-29.5,Declining,False,True,True,65
+STU02745,Morgan Thomas,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,810.5,21,Intervention,74.2,Strong Growth,False,False,False,19
+STU02747,Avery Thomas,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,718.8,20,Intervention,51.0,Strong Growth,False,False,True,30
+STU02749,Avery Walker,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,683.2,13,Intervention,-156.8,Declining,False,False,True,62
+STU02750,Skyler Kim,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,754.2,22,Intervention,80.4,Strong Growth,True,False,True,28
+STU02752,Harper Garcia,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,773.7,8,Urgent Intervention,-25.1,Declining,False,False,False,57
+STU02756,Noa Patel,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,458.6,1,Urgent Intervention,-5.5,Declining,False,False,True,74
+STU02764,Riley Garcia,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,569.4,8,Urgent Intervention,85.4,Strong Growth,False,True,True,42
+STU02766,Emery Lopez,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,801.2,19,Intervention,-7.9,Declining,False,False,False,46
+STU02773,Logan Walker,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,622.5,24,Intervention,-11.2,Declining,True,False,True,51
+STU02780,Jamie Johnson,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,701.8,13,Intervention,37.4,Strong Growth,True,False,True,37
+STU02797,Devon Lee,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,564.4,22,Intervention,53.5,Strong Growth,False,False,False,18
+STU02798,Harper Smith,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,667.2,1,Urgent Intervention,-15.2,Declining,False,False,False,64
+STU02800,Skyler Young,7,Hillcrest Community,Hillcrest Middle,SUBJ_R,773.6,20,Intervention,1.3,Flat,False,False,True,30
+STU02804,Kai Chen,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,769.6,19,Intervention,-21.5,Declining,True,False,True,56
+STU02829,Harper Davis,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,856.0,18,Intervention,68.2,Strong Growth,False,True,False,32
+STU02836,Skyler Martinez,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,552.7,9,Urgent Intervention,161.7,Strong Growth,True,True,True,41
+STU02836,Skyler Martinez,6,Hillcrest Community,Hillcrest Middle,SUBJ_M,513.6,8,Urgent Intervention,-2.2,Flat,True,True,True,67
+STU02837,Harper Wilson,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,622.7,14,Intervention,11.7,On Track,False,False,True,36
+STU02847,Skyler Young,8,Hillcrest Community,Hillcrest Middle,SUBJ_M,856.9,23,Intervention,-153.7,Declining,False,False,False,42
+STU02854,Harper Davis,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,606.4,24,Intervention,25.0,On Track,False,False,False,16
+STU02862,Kai Lopez,7,Hillcrest Community,Hillcrest Middle,SUBJ_M,641.0,15,Intervention,-134.5,Declining,True,False,False,60
+STU02864,Jordan Thomas,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,831.5,22,Intervention,-60.4,Declining,False,True,False,53
+STU02865,Sage Smith,6,Hillcrest Community,Hillcrest Middle,SUBJ_R,706.7,21,Intervention,137.9,Strong Growth,False,False,True,29
+STU02870,Reese Nguyen,8,Hillcrest Community,Hillcrest Middle,SUBJ_R,792.2,17,Intervention,-125.2,Declining,False,False,True,58

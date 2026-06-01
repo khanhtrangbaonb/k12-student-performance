@@ -1,0 +1,337 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>K–12 Student Performance · BI Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f1ea; --panel:#fbfaf6; --ink:#1b1d1a; --muted:#6f6a5f; --line:#e2ddd1;
+    --accent:#1f5c54; --accent-soft:#cfe2dd;
+    --c-above:#2f8f5b; --c-watch:#d9a521; --c-inter:#d8743a; --c-urgent:#bf3d39;
+    --shadow:0 1px 2px rgba(40,35,25,.06),0 8px 24px rgba(40,35,25,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+      radial-gradient(1200px 500px at 85% -10%, #ece7db 0%, transparent 60%),
+      var(--bg);
+    color:var(--ink);font-family:"IBM Plex Sans",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.45}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 26px 64px}
+  header{display:flex;justify-content:space-between;align-items:flex-end;
+    gap:24px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:18px}
+  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(28px,4vw,46px);
+    line-height:.98;margin:0;letter-spacing:-.01em}
+  h1 span{display:block;font-size:.42em;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .meta{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);
+    text-align:right;line-height:1.7}
+  .meta b{color:var(--ink)}
+  /* filters */
+  .filters{display:flex;gap:26px;flex-wrap:wrap;margin:24px 0 8px;align-items:center}
+  .fgroup{display:flex;flex-direction:column;gap:7px}
+  .fgroup label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{font:500 13px "IBM Plex Sans";padding:7px 14px;border:1px solid var(--line);
+    background:var(--panel);border-radius:999px;cursor:pointer;transition:.15s;color:var(--muted)}
+  .chip:hover{border-color:var(--accent)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  /* kpi */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0 26px}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:18px 18px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .kpi::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .kpi .v{font-family:"Fraunces",serif;font-weight:900;font-size:38px;line-height:1;letter-spacing:-.02em}
+  .kpi .k{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+  .kpi .d{font-size:12px;color:var(--muted);margin-top:3px}
+  .kpi.warn::after{background:var(--c-urgent)}
+  /* layout */
+  .grid{display:grid;grid-template-columns:1.15fr 1fr;gap:18px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:20px 22px;box-shadow:var(--shadow);margin-bottom:18px}
+  .card h2{font-family:"Fraunces",serif;font-weight:600;font-size:19px;margin:0 0 2px}
+  .card .sub{font-size:12.5px;color:var(--muted);margin:0 0 16px}
+  svg{display:block;width:100%;overflow:visible}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  /* drill table */
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  .drill .row{display:grid;grid-template-columns:1fr 78px 120px;align-items:center;
+    gap:10px;padding:9px 6px;border-bottom:1px solid var(--line);cursor:pointer}
+  .drill .row:hover{background:#f1eee5}
+  .drill .lvl-0{font-weight:600;font-family:"Fraunces",serif;font-size:15px}
+  .drill .lvl-1{padding-left:22px}
+  .drill .lvl-2{padding-left:44px;color:var(--muted);cursor:default}
+  .drill .row.lvl-2:hover{background:transparent}
+  .twig{color:var(--muted);font-size:11px;margin-right:7px;display:inline-block;width:10px}
+  .bar{height:9px;border-radius:5px;background:#e8e3d6;position:relative;overflow:hidden}
+  .bar>span{position:absolute;left:0;top:0;bottom:0;background:var(--c-above);border-radius:5px}
+  .pill{font:500 11px "IBM Plex Mono";text-align:right}
+  .hidden{display:none}
+  /* at risk */
+  .risk-row{display:grid;grid-template-columns:20px 1fr 56px 90px 60px;gap:9px;
+    align-items:center;padding:8px 4px;border-bottom:1px solid var(--line);font-size:12.5px}
+  .risk-row .nm{font-weight:500}
+  .risk-row .sub2{color:var(--muted);font-size:11px}
+  .band{font:500 10.5px "IBM Plex Sans";padding:2px 8px;border-radius:999px;white-space:nowrap;text-align:center}
+  .band.Urgent{background:#f7dcd9;color:var(--c-urgent)}
+  .band.Inter{background:#f6e3d3;color:#b35b27}
+  .tag{font:500 9.5px "IBM Plex Mono";color:var(--muted);border:1px solid var(--line);
+    border-radius:4px;padding:1px 4px;margin-left:3px}
+  .prio{font-family:"Fraunces",serif;font-weight:900;font-size:19px;text-align:right;color:var(--c-urgent)}
+  .rank{font-family:"IBM Plex Mono";font-size:11px;color:var(--muted)}
+  footer{margin-top:30px;font-size:11.5px;color:var(--muted);font-family:"IBM Plex Mono",monospace;
+    border-top:1px solid var(--line);padding-top:14px;line-height:1.7}
+  .axis{font:500 11px "IBM Plex Mono";fill:var(--muted)}
+  .gridline{stroke:var(--line);stroke-width:1}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1><span>Renaissance-style Benchmark Analytics</span>K–12 Student Performance</h1>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <div class="filters">
+    <div class="fgroup">
+      <label>District</label>
+      <div class="chips" id="districtChips"></div>
+    </div>
+    <div class="fgroup">
+      <label>Subject</label>
+      <div class="chips" id="subjectChips"></div>
+    </div>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Proficiency trend</h2>
+      <p class="sub">% At / Above Benchmark across the Fall → Winter → Spring windows</p>
+      <svg id="trendChart" viewBox="0 0 560 300"></svg>
+    </div>
+    <div class="card">
+      <h2>Benchmark mix</h2>
+      <p class="sub">Share of students by benchmark category, per window</p>
+      <svg id="mixChart" viewBox="0 0 480 300"></svg>
+      <div class="legend">
+        <span><i style="background:var(--c-above)"></i>At/Above</span>
+        <span><i style="background:var(--c-watch)"></i>On Watch</span>
+        <span><i style="background:var(--c-inter)"></i>Intervention</span>
+        <span><i style="background:var(--c-urgent)"></i>Urgent</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Drill-down · District → School → Grade</h2>
+      <p class="sub">Spring proficiency. Click a row to expand. Bar = % proficient.</p>
+      <div class="drill" id="drill"></div>
+    </div>
+    <div class="card">
+      <h2>At-risk roster</h2>
+      <p class="sub">Highest-priority students for intervention (Spring)</p>
+      <div id="risk"></div>
+    </div>
+  </div>
+
+  <footer id="foot"></footer>
+</div>
+
+<script id="data" type="application/json">{"meta":{"school_year":"2024-2025","n_students":2870,"n_schools":7,"n_districts":3,"n_assessments":17220,"subjects":{"SUBJ_R":"Reading","SUBJ_M":"Math"}},"kpis":{"pct_proficient_spring":74.7,"pct_at_risk_spring":8.0,"avg_growth":50.9,"pct_strong_growth":63.9},"trends":[{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"pct_proficient":63.8,"avg_scaled_score":591.3,"pct_at_risk":11.1},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"pct_proficient":73.1,"avg_scaled_score":641.2,"pct_at_risk":9.6},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"pct_proficient":70.4,"avg_scaled_score":615.9,"pct_at_risk":9.2},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"pct_proficient":68.7,"avg_scaled_score":634.6,"pct_at_risk":10.4},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"pct_proficient":75.6,"avg_scaled_score":686.6,"pct_at_risk":7.8},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"pct_proficient":72.3,"avg_scaled_score":662.0,"pct_at_risk":9.4},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"pct_proficient":64.3,"avg_scaled_score":594.3,"pct_at_risk":11.4},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"pct_proficient":77.3,"avg_scaled_score":647.5,"pct_at_risk":7.1},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"pct_proficient":74.5,"avg_scaled_score":620.9,"pct_at_risk":8.3},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"pct_proficient":61.9,"avg_scaled_score":627.0,"pct_at_risk":12.1},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"pct_proficient":75.3,"avg_scaled_score":677.2,"pct_at_risk":8.7},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"pct_proficient":69.8,"avg_scaled_score":651.4,"pct_at_risk":9.1},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"pct_proficient":61.9,"avg_scaled_score":532.4,"pct_at_risk":11.8},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"pct_proficient":74.3,"avg_scaled_score":585.3,"pct_at_risk":7.7},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"pct_proficient":72.2,"avg_scaled_score":560.9,"pct_at_risk":8.3},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"pct_proficient":66.3,"avg_scaled_score":583.1,"pct_at_risk":11.7},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"pct_proficient":75.5,"avg_scaled_score":632.9,"pct_at_risk":7.5},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"pct_proficient":71.3,"avg_scaled_score":607.2,"pct_at_risk":8.7}],"benchmark_mix":[{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"At/Above Benchmark","n":486},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"Intervention","n":65},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"On Watch","n":170},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"Urgent Intervention","n":19},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"At/Above Benchmark","n":546},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"Intervention","n":62},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"On Watch","n":125},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"Urgent Intervention","n":7},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"At/Above Benchmark","n":529},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"Intervention","n":54},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"On Watch","n":146},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"Urgent Intervention","n":11},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"At/Above Benchmark","n":502},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"Intervention","n":59},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"On Watch","n":162},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"Urgent Intervention","n":17},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"At/Above Benchmark","n":558},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"Intervention","n":45},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"On Watch","n":123},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"Urgent Intervention","n":14},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"At/Above Benchmark","n":538},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"Intervention","n":59},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"On Watch","n":134},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"Urgent Intervention","n":9},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"At/Above Benchmark","n":531},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"Intervention","n":80},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"On Watch","n":189},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"Urgent Intervention","n":20},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"At/Above Benchmark","n":628},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"Intervention","n":41},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"On Watch","n":130},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"Urgent Intervention","n":21},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"At/Above Benchmark","n":598},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"Intervention","n":58},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"On Watch","n":148},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"Urgent Intervention","n":16},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"At/Above Benchmark","n":498},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"Intervention","n":83},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"On Watch","n":219},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"Urgent Intervention","n":20},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"At/Above Benchmark","n":613},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"Intervention","n":59},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"On Watch","n":136},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"Urgent Intervention","n":12},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"At/Above Benchmark","n":565},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"Intervention","n":67},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"On Watch","n":180},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"Urgent Intervention","n":8},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"At/Above Benchmark","n":800},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"Intervention","n":126},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"On Watch","n":358},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Fall","window_sort":1,"benchmark_category":"Urgent Intervention","n":26},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"At/Above Benchmark","n":959},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"Intervention","n":85},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"On Watch","n":250},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Spring","window_sort":3,"benchmark_category":"Urgent Intervention","n":16},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"At/Above Benchmark","n":929},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"Intervention","n":92},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"On Watch","n":269},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","window_label":"Winter","window_sort":2,"benchmark_category":"Urgent Intervention","n":20},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"At/Above Benchmark","n":868},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"Intervention","n":134},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"On Watch","n":287},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Fall","window_sort":1,"benchmark_category":"Urgent Intervention","n":21},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"At/Above Benchmark","n":982},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"Intervention","n":83},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"On Watch","n":229},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Spring","window_sort":3,"benchmark_category":"Urgent Intervention","n":16},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"At/Above Benchmark","n":927},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"Intervention","n":102},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"On Watch","n":263},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","window_label":"Winter","window_sort":2,"benchmark_category":"Urgent Intervention","n":18}],"drill":[{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"1","subject_id":"SUBJ_M","n":44,"pct_proficient":72.7,"pct_at_risk":6.8,"avg_scaled":367.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"1","subject_id":"SUBJ_R","n":44,"pct_proficient":77.3,"pct_at_risk":6.8,"avg_scaled":420.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"2","subject_id":"SUBJ_M","n":47,"pct_proficient":63.8,"pct_at_risk":12.8,"avg_scaled":426.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"2","subject_id":"SUBJ_R","n":47,"pct_proficient":74.5,"pct_at_risk":10.6,"avg_scaled":467.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"3","subject_id":"SUBJ_M","n":56,"pct_proficient":75.0,"pct_at_risk":14.3,"avg_scaled":568.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"3","subject_id":"SUBJ_R","n":56,"pct_proficient":82.1,"pct_at_risk":3.6,"avg_scaled":612.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"4","subject_id":"SUBJ_M","n":50,"pct_proficient":72.0,"pct_at_risk":12.0,"avg_scaled":628.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"4","subject_id":"SUBJ_R","n":50,"pct_proficient":78.0,"pct_at_risk":6.0,"avg_scaled":684.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"5","subject_id":"SUBJ_M","n":58,"pct_proficient":81.0,"pct_at_risk":5.2,"avg_scaled":740.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"5","subject_id":"SUBJ_R","n":58,"pct_proficient":74.1,"pct_at_risk":8.6,"avg_scaled":794.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"K","subject_id":"SUBJ_M","n":45,"pct_proficient":71.1,"pct_at_risk":8.9,"avg_scaled":250.0},{"district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","grade_label":"K","subject_id":"SUBJ_R","n":45,"pct_proficient":68.9,"pct_at_risk":8.9,"avg_scaled":306.0},{"district_name":"Hillcrest Community","school_name":"Hillcrest Middle","grade_label":"6","subject_id":"SUBJ_M","n":144,"pct_proficient":72.9,"pct_at_risk":9.0,"avg_scaled":841.0},{"district_name":"Hillcrest Community","school_name":"Hillcrest Middle","grade_label":"6","subject_id":"SUBJ_R","n":144,"pct_proficient":75.0,"pct_at_risk":9.7,"avg_scaled":870.0},{"district_name":"Hillcrest Community","school_name":"Hillcrest Middle","grade_label":"7","subject_id":"SUBJ_M","n":155,"pct_proficient":78.7,"pct_at_risk":9.0,"avg_scaled":926.0},{"district_name":"Hillcrest Community","school_name":"Hillcrest Middle","grade_label":"7","subject_id":"SUBJ_R","n":155,"pct_proficient":72.9,"pct_at_risk":7.1,"avg_scaled":963.0},{"district_name":"Hillcrest Community","school_name":"Hillcrest Middle","grade_label":"8","subject_id":"SUBJ_M","n":141,"pct_proficient":70.9,"pct_at_risk":8.5,"avg_scaled":1026.0},{"district_name":"Hillcrest Community","school_name":"Hillcrest Middle","grade_label":"8","subject_id":"SUBJ_R","n":141,"pct_proficient":77.3,"pct_at_risk":8.5,"avg_scaled":1063.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"1","subject_id":"SUBJ_M","n":53,"pct_proficient":77.4,"pct_at_risk":9.4,"avg_scaled":350.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"1","subject_id":"SUBJ_R","n":53,"pct_proficient":73.6,"pct_at_risk":11.3,"avg_scaled":373.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"2","subject_id":"SUBJ_M","n":51,"pct_proficient":84.3,"pct_at_risk":5.9,"avg_scaled":444.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"2","subject_id":"SUBJ_R","n":51,"pct_proficient":72.5,"pct_at_risk":7.8,"avg_scaled":491.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"3","subject_id":"SUBJ_M","n":63,"pct_proficient":79.4,"pct_at_risk":4.8,"avg_scaled":567.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"3","subject_id":"SUBJ_R","n":63,"pct_proficient":76.2,"pct_at_risk":7.9,"avg_scaled":588.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"4","subject_id":"SUBJ_M","n":65,"pct_proficient":81.5,"pct_at_risk":1.5,"avg_scaled":690.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"4","subject_id":"SUBJ_R","n":65,"pct_proficient":83.1,"pct_at_risk":6.2,"avg_scaled":687.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"5","subject_id":"SUBJ_M","n":58,"pct_proficient":70.7,"pct_at_risk":10.3,"avg_scaled":706.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"5","subject_id":"SUBJ_R","n":58,"pct_proficient":82.8,"pct_at_risk":5.2,"avg_scaled":798.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"K","subject_id":"SUBJ_M","n":60,"pct_proficient":76.7,"pct_at_risk":6.7,"avg_scaled":300.0},{"district_name":"Lakewood Public","school_name":"Birchwood Elementary","grade_label":"K","subject_id":"SUBJ_R","n":60,"pct_proficient":70.0,"pct_at_risk":13.3,"avg_scaled":279.0},{"district_name":"Lakewood Public","school_name":"Lakewood Middle","grade_label":"6","subject_id":"SUBJ_M","n":178,"pct_proficient":77.0,"pct_at_risk":9.0,"avg_scaled":830.0},{"district_name":"Lakewood Public","school_name":"Lakewood Middle","grade_label":"6","subject_id":"SUBJ_R","n":178,"pct_proficient":77.0,"pct_at_risk":6.2,"avg_scaled":869.0},{"district_name":"Lakewood Public","school_name":"Lakewood Middle","grade_label":"7","subject_id":"SUBJ_M","n":147,"pct_proficient":70.1,"pct_at_risk":9.5,"avg_scaled":923.0},{"district_name":"Lakewood Public","school_name":"Lakewood Middle","grade_label":"7","subject_id":"SUBJ_R","n":147,"pct_proficient":74.1,"pct_at_risk":8.8,"avg_scaled":961.0},{"district_name":"Lakewood Public","school_name":"Lakewood Middle","grade_label":"8","subject_id":"SUBJ_M","n":145,"pct_proficient":78.6,"pct_at_risk":6.9,"avg_scaled":1018.0},{"district_name":"Lakewood Public","school_name":"Lakewood Middle","grade_label":"8","subject_id":"SUBJ_R","n":145,"pct_proficient":68.3,"pct_at_risk":11.7,"avg_scaled":1048.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"1","subject_id":"SUBJ_M","n":81,"pct_proficient":70.4,"pct_at_risk":8.6,"avg_scaled":353.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"1","subject_id":"SUBJ_R","n":81,"pct_proficient":81.5,"pct_at_risk":4.9,"avg_scaled":420.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"2","subject_id":"SUBJ_M","n":67,"pct_proficient":76.1,"pct_at_risk":4.5,"avg_scaled":453.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"2","subject_id":"SUBJ_R","n":67,"pct_proficient":71.6,"pct_at_risk":13.4,"avg_scaled":481.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"3","subject_id":"SUBJ_M","n":80,"pct_proficient":81.2,"pct_at_risk":7.5,"avg_scaled":564.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"3","subject_id":"SUBJ_R","n":80,"pct_proficient":77.5,"pct_at_risk":7.5,"avg_scaled":573.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"4","subject_id":"SUBJ_M","n":59,"pct_proficient":81.4,"pct_at_risk":1.7,"avg_scaled":668.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"4","subject_id":"SUBJ_R","n":59,"pct_proficient":86.4,"pct_at_risk":5.1,"avg_scaled":731.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"5","subject_id":"SUBJ_M","n":66,"pct_proficient":81.8,"pct_at_risk":6.1,"avg_scaled":772.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"5","subject_id":"SUBJ_R","n":66,"pct_proficient":69.7,"pct_at_risk":7.6,"avg_scaled":768.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"K","subject_id":"SUBJ_M","n":67,"pct_proficient":85.1,"pct_at_risk":6.0,"avg_scaled":287.0},{"district_name":"Riverside Unified","school_name":"Maple Grove Elementary","grade_label":"K","subject_id":"SUBJ_R","n":67,"pct_proficient":73.1,"pct_at_risk":10.4,"avg_scaled":331.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"1","subject_id":"SUBJ_M","n":73,"pct_proficient":72.6,"pct_at_risk":9.6,"avg_scaled":351.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"1","subject_id":"SUBJ_R","n":73,"pct_proficient":76.7,"pct_at_risk":6.8,"avg_scaled":399.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"2","subject_id":"SUBJ_M","n":45,"pct_proficient":68.9,"pct_at_risk":17.8,"avg_scaled":433.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"2","subject_id":"SUBJ_R","n":45,"pct_proficient":77.8,"pct_at_risk":6.7,"avg_scaled":528.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"3","subject_id":"SUBJ_M","n":75,"pct_proficient":76.0,"pct_at_risk":9.3,"avg_scaled":533.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"3","subject_id":"SUBJ_R","n":75,"pct_proficient":72.0,"pct_at_risk":4.0,"avg_scaled":566.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"4","subject_id":"SUBJ_M","n":66,"pct_proficient":71.2,"pct_at_risk":7.6,"avg_scaled":626.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"4","subject_id":"SUBJ_R","n":66,"pct_proficient":78.8,"pct_at_risk":6.1,"avg_scaled":700.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"5","subject_id":"SUBJ_M","n":57,"pct_proficient":73.7,"pct_at_risk":7.0,"avg_scaled":742.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"5","subject_id":"SUBJ_R","n":57,"pct_proficient":82.5,"pct_at_risk":5.3,"avg_scaled":798.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"K","subject_id":"SUBJ_M","n":64,"pct_proficient":67.2,"pct_at_risk":4.7,"avg_scaled":260.0},{"district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","grade_label":"K","subject_id":"SUBJ_R","n":64,"pct_proficient":65.6,"pct_at_risk":10.9,"avg_scaled":294.0},{"district_name":"Riverside Unified","school_name":"Riverside Middle","grade_label":"6","subject_id":"SUBJ_M","n":161,"pct_proficient":66.5,"pct_at_risk":10.6,"avg_scaled":811.0},{"district_name":"Riverside Unified","school_name":"Riverside Middle","grade_label":"6","subject_id":"SUBJ_R","n":161,"pct_proficient":68.9,"pct_at_risk":9.3,"avg_scaled":860.0},{"district_name":"Riverside Unified","school_name":"Riverside Middle","grade_label":"7","subject_id":"SUBJ_M","n":198,"pct_proficient":70.2,"pct_at_risk":8.1,"avg_scaled":915.0},{"district_name":"Riverside Unified","school_name":"Riverside Middle","grade_label":"7","subject_id":"SUBJ_R","n":198,"pct_proficient":74.7,"pct_at_risk":7.1,"avg_scaled":972.0},{"district_name":"Riverside Unified","school_name":"Riverside Middle","grade_label":"8","subject_id":"SUBJ_M","n":151,"pct_proficient":71.5,"pct_at_risk":6.0,"avg_scaled":1009.0},{"district_name":"Riverside Unified","school_name":"Riverside Middle","grade_label":"8","subject_id":"SUBJ_R","n":151,"pct_proficient":76.2,"pct_at_risk":7.3,"avg_scaled":1073.0}],"growth_flags":[{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","growth_flag":"Declining","n":196},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","growth_flag":"Flat","n":33},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","growth_flag":"On Track","n":44},{"district_name":"Hillcrest Community","subject_id":"SUBJ_M","growth_flag":"Strong Growth","n":467},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","growth_flag":"Declining","n":170},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","growth_flag":"Flat","n":44},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","growth_flag":"On Track","n":62},{"district_name":"Hillcrest Community","subject_id":"SUBJ_R","growth_flag":"Strong Growth","n":464},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","growth_flag":"Declining","n":179},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","growth_flag":"Flat","n":36},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","growth_flag":"On Track","n":53},{"district_name":"Lakewood Public","subject_id":"SUBJ_M","growth_flag":"Strong Growth","n":552},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","growth_flag":"Declining","n":186},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","growth_flag":"Flat","n":36},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","growth_flag":"On Track","n":71},{"district_name":"Lakewood Public","subject_id":"SUBJ_R","growth_flag":"Strong Growth","n":527},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","growth_flag":"Declining","n":291},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","growth_flag":"Flat","n":68},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","growth_flag":"On Track","n":124},{"district_name":"Riverside Unified","subject_id":"SUBJ_M","growth_flag":"Strong Growth","n":827},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","growth_flag":"Declining","n":322},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","growth_flag":"Flat","n":70},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","growth_flag":"On Track","n":90},{"district_name":"Riverside Unified","subject_id":"SUBJ_R","growth_flag":"Strong Growth","n":828}],"at_risk_top":[{"student_id":"STU00018","student_name":"Morgan Lopez","grade_label":"3","district_name":"Riverside Unified","school_name":"Maple Grove Elementary","subject_id":"SUBJ_R","spring_score":86.9,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-65.5,"growth_flag":"Declining","is_ell":false,"has_iep":true,"is_frl":true,"priority_score":74},{"student_id":"STU00439","student_name":"Noa Lee","grade_label":"3","district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","subject_id":"SUBJ_M","spring_score":211.1,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-57.4,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU02450","student_name":"Harper Thomas","grade_label":"6","district_name":"Hillcrest Community","school_name":"Hillcrest Middle","subject_id":"SUBJ_M","spring_score":334.3,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-104.8,"growth_flag":"Declining","is_ell":true,"has_iep":true,"is_frl":true,"priority_score":74},{"student_id":"STU02081","student_name":"Skyler Garcia","grade_label":"6","district_name":"Lakewood Public","school_name":"Lakewood Middle","subject_id":"SUBJ_M","spring_score":402.6,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-38.8,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU00845","student_name":"Sage Davis","grade_label":"6","district_name":"Riverside Unified","school_name":"Riverside Middle","subject_id":"SUBJ_M","spring_score":469.4,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-28.3,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU01058","student_name":"Sage Lee","grade_label":"8","district_name":"Riverside Unified","school_name":"Riverside Middle","subject_id":"SUBJ_M","spring_score":636.3,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-109.2,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU01069","student_name":"Casey Smith","grade_label":"6","district_name":"Riverside Unified","school_name":"Riverside Middle","subject_id":"SUBJ_M","spring_score":458.2,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-13.8,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU01732","student_name":"Logan Anderson","grade_label":"8","district_name":"Lakewood Public","school_name":"Lakewood Middle","subject_id":"SUBJ_M","spring_score":627.0,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-100.6,"growth_flag":"Declining","is_ell":false,"has_iep":true,"is_frl":false,"priority_score":74},{"student_id":"STU01852","student_name":"Skyler Anderson","grade_label":"6","district_name":"Lakewood Public","school_name":"Lakewood Middle","subject_id":"SUBJ_R","spring_score":471.3,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-57.4,"growth_flag":"Declining","is_ell":true,"has_iep":true,"is_frl":true,"priority_score":74},{"student_id":"STU01727","student_name":"Reese Thomas","grade_label":"7","district_name":"Lakewood Public","school_name":"Lakewood Middle","subject_id":"SUBJ_M","spring_score":435.5,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-80.6,"growth_flag":"Declining","is_ell":true,"has_iep":true,"is_frl":false,"priority_score":74},{"student_id":"STU01209","student_name":"Finley Garcia","grade_label":"8","district_name":"Riverside Unified","school_name":"Riverside Middle","subject_id":"SUBJ_M","spring_score":561.4,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-45.0,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU01998","student_name":"Devon Khan","grade_label":"7","district_name":"Lakewood Public","school_name":"Lakewood Middle","subject_id":"SUBJ_M","spring_score":535.7,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-68.4,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU01557","student_name":"Quinn Young","grade_label":"2","district_name":"Lakewood Public","school_name":"Birchwood Elementary","subject_id":"SUBJ_M","spring_score":50.0,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-62.7,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU02756","student_name":"Noa Patel","grade_label":"6","district_name":"Hillcrest Community","school_name":"Hillcrest Middle","subject_id":"SUBJ_R","spring_score":458.6,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-5.5,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU01480","student_name":"Jordan Davis","grade_label":"3","district_name":"Lakewood Public","school_name":"Birchwood Elementary","subject_id":"SUBJ_M","spring_score":181.3,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-108.1,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU01546","student_name":"Avery Wilson","grade_label":"5","district_name":"Lakewood Public","school_name":"Birchwood Elementary","subject_id":"SUBJ_M","spring_score":367.3,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-45.7,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU02692","student_name":"Avery Thomas","grade_label":"7","district_name":"Hillcrest Community","school_name":"Hillcrest Middle","subject_id":"SUBJ_R","spring_score":592.9,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-35.2,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":false,"priority_score":74},{"student_id":"STU00202","student_name":"Finley Smith","grade_label":"2","district_name":"Riverside Unified","school_name":"Maple Grove Elementary","subject_id":"SUBJ_R","spring_score":89.1,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-76.7,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":74},{"student_id":"STU02679","student_name":"Sage Brown","grade_label":"6","district_name":"Hillcrest Community","school_name":"Hillcrest Middle","subject_id":"SUBJ_R","spring_score":478.0,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-45.8,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":false,"priority_score":74},{"student_id":"STU01612","student_name":"Kai Brown","grade_label":"5","district_name":"Lakewood Public","school_name":"Birchwood Elementary","subject_id":"SUBJ_R","spring_score":371.8,"spring_pr":1,"benchmark_category":"Urgent Intervention","scaled_growth":-17.4,"growth_flag":"Declining","is_ell":false,"has_iep":true,"is_frl":true,"priority_score":74},{"student_id":"STU01354","student_name":"Micah Khan","grade_label":"2","district_name":"Lakewood Public","school_name":"Birchwood Elementary","subject_id":"SUBJ_R","spring_score":175.8,"spring_pr":2,"benchmark_category":"Urgent Intervention","scaled_growth":-113.2,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":false,"priority_score":73},{"student_id":"STU01126","student_name":"Jamie Anderson","grade_label":"7","district_name":"Riverside Unified","school_name":"Riverside Middle","subject_id":"SUBJ_M","spring_score":549.9,"spring_pr":2,"benchmark_category":"Urgent Intervention","scaled_growth":-40.1,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":73},{"student_id":"STU01092","student_name":"Jordan Smith","grade_label":"7","district_name":"Riverside Unified","school_name":"Riverside Middle","subject_id":"SUBJ_R","spring_score":623.6,"spring_pr":3,"benchmark_category":"Urgent Intervention","scaled_growth":-50.9,"growth_flag":"Declining","is_ell":true,"has_iep":true,"is_frl":true,"priority_score":72},{"student_id":"STU00920","student_name":"Emery Kim","grade_label":"6","district_name":"Riverside Unified","school_name":"Riverside Middle","subject_id":"SUBJ_M","spring_score":505.7,"spring_pr":3,"benchmark_category":"Urgent Intervention","scaled_growth":-74.4,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":72},{"student_id":"STU02651","student_name":"Morgan Brown","grade_label":"6","district_name":"Hillcrest Community","school_name":"Hillcrest Middle","subject_id":"SUBJ_R","spring_score":635.2,"spring_pr":3,"benchmark_category":"Urgent Intervention","scaled_growth":-56.1,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":false,"priority_score":72},{"student_id":"STU00667","student_name":"Harper Brown","grade_label":"1","district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","subject_id":"SUBJ_R","spring_score":110.9,"spring_pr":4,"benchmark_category":"Urgent Intervention","scaled_growth":-156.5,"growth_flag":"Declining","is_ell":false,"has_iep":true,"is_frl":true,"priority_score":71},{"student_id":"STU02266","student_name":"Skyler Rivera","grade_label":"4","district_name":"Hillcrest Community","school_name":"Cedar Point Elementary","subject_id":"SUBJ_R","spring_score":308.6,"spring_pr":4,"benchmark_category":"Urgent Intervention","scaled_growth":-109.5,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":71},{"student_id":"STU00285","student_name":"Micah Chen","grade_label":"2","district_name":"Riverside Unified","school_name":"Maple Grove Elementary","subject_id":"SUBJ_M","spring_score":139.6,"spring_pr":4,"benchmark_category":"Urgent Intervention","scaled_growth":-49.9,"growth_flag":"Declining","is_ell":false,"has_iep":true,"is_frl":true,"priority_score":71},{"student_id":"STU01496","student_name":"Riley Young","grade_label":"2","district_name":"Lakewood Public","school_name":"Birchwood Elementary","subject_id":"SUBJ_R","spring_score":173.0,"spring_pr":4,"benchmark_category":"Urgent Intervention","scaled_growth":-19.5,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":true,"priority_score":71},{"student_id":"STU00141","student_name":"Morgan Garcia","grade_label":"2","district_name":"Riverside Unified","school_name":"Maple Grove Elementary","subject_id":"SUBJ_R","spring_score":184.0,"spring_pr":5,"benchmark_category":"Urgent Intervention","scaled_growth":-49.7,"growth_flag":"Declining","is_ell":false,"has_iep":true,"is_frl":false,"priority_score":70},{"student_id":"STU01140","student_name":"Devon Chen","grade_label":"8","district_name":"Riverside Unified","school_name":"Riverside Middle","subject_id":"SUBJ_R","spring_score":760.9,"spring_pr":5,"benchmark_category":"Urgent Intervention","scaled_growth":-79.8,"growth_flag":"Declining","is_ell":false,"has_iep":true,"is_frl":true,"priority_score":70},{"student_id":"STU02587","student_name":"Parker Nguyen","grade_label":"6","district_name":"Hillcrest Community","school_name":"Hillcrest Middle","subject_id":"SUBJ_M","spring_score":513.9,"spring_pr":5,"benchmark_category":"Urgent Intervention","scaled_growth":-36.6,"growth_flag":"Declining","is_ell":true,"has_iep":false,"is_frl":false,"priority_score":70},{"student_id":"STU01022","student_name":"Casey Davis","grade_label":"8","district_name":"Riverside Unified","school_name":"Riverside Middle","subject_id":"SUBJ_M","spring_score":759.3,"spring_pr":7,"benchmark_category":"Urgent Intervention","scaled_growth":-30.1,"growth_flag":"Declining","is_ell":false,"has_iep":true,"is_frl":true,"priority_score":68},{"student_id":"STU00646","student_name":"Casey Smith","grade_label":"1","district_name":"Riverside Unified","school_name":"Oak Ridge Elementary","subject_id":"SUBJ_R","spring_score":50.0,"spring_pr":7,"benchmark_category":"Urgent Intervention","scaled_growth":-4.1,"growth_flag":"Flat","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":68},{"student_id":"STU02551","student_name":"Devon Kim","grade_label":"8","district_name":"Hillcrest Community","school_name":"Hillcrest Middle","subject_id":"SUBJ_R","spring_score":789.7,"spring_pr":7,"benchmark_category":"Urgent Intervention","scaled_growth":-95.2,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":68},{"student_id":"STU01550","student_name":"Sage Anderson","grade_label":"3","district_name":"Lakewood Public","school_name":"Birchwood Elementary","subject_id":"SUBJ_M","spring_score":211.4,"spring_pr":7,"benchmark_category":"Urgent Intervention","scaled_growth":-34.7,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":68},{"student_id":"STU02836","student_name":"Skyler Martinez","grade_label":"6","district_name":"Hillcrest Community","school_name":"Hillcrest Middle","subject_id":"SUBJ_M","spring_score":513.6,"spring_pr":8,"benchmark_category":"Urgent Intervention","scaled_growth":-2.2,"growth_flag":"Flat","is_ell":true,"has_iep":true,"is_frl":true,"priority_score":67},{"student_id":"STU01531","student_name":"Logan Thomas","grade_label":"1","district_name":"Lakewood Public","school_name":"Birchwood Elementary","subject_id":"SUBJ_M","spring_score":50.0,"spring_pr":8,"benchmark_category":"Urgent Intervention","scaled_growth":-52.3,"growth_flag":"Declining","is_ell":false,"has_iep":true,"is_frl":true,"priority_score":67},{"student_id":"STU01718","student_name":"Sage Khan","grade_label":"6","district_name":"Lakewood Public","school_name":"Lakewood Middle","subject_id":"SUBJ_M","spring_score":543.9,"spring_pr":8,"benchmark_category":"Urgent Intervention","scaled_growth":-28.7,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":67},{"student_id":"STU02614","student_name":"Logan Young","grade_label":"8","district_name":"Hillcrest Community","school_name":"Hillcrest Middle","subject_id":"SUBJ_M","spring_score":693.9,"spring_pr":8,"benchmark_category":"Urgent Intervention","scaled_growth":-62.6,"growth_flag":"Declining","is_ell":false,"has_iep":false,"is_frl":true,"priority_score":67}]}</script>
+<script>
+const DATA = JSON.parse(document.getElementById('data').textContent);
+const SUBJ = DATA.meta.subjects;
+const BANDS = ['At/Above Benchmark','On Watch','Intervention','Urgent Intervention'];
+const BANDC = {'At/Above Benchmark':'var(--c-above)','On Watch':'var(--c-watch)',
+               'Intervention':'var(--c-inter)','Urgent Intervention':'var(--c-urgent)'};
+let state = { district:'All', subject:'SUBJ_R' };
+
+// ---- meta + filters
+document.getElementById('meta').innerHTML =
+  `school year <b>${DATA.meta.school_year}</b><br>`+
+  `<b>${DATA.meta.n_students.toLocaleString()}</b> students · <b>${DATA.meta.n_schools}</b> schools · <b>${DATA.meta.n_districts}</b> districts<br>`+
+  `<b>${DATA.meta.n_assessments.toLocaleString()}</b> assessment records`;
+
+const districts = ['All', ...[...new Set(DATA.drill.map(d=>d.district_name))].sort()];
+const dc = document.getElementById('districtChips');
+districts.forEach(d=>{
+  const b=document.createElement('button'); b.className='chip'+(d===state.district?' on':'');
+  b.textContent=d; b.onclick=()=>{state.district=d; sync('districtChips','district',districts); render();};
+  dc.appendChild(b);
+});
+const subs = Object.keys(SUBJ);
+const sc = document.getElementById('subjectChips');
+subs.forEach(s=>{
+  const b=document.createElement('button'); b.className='chip'+(s===state.subject?' on':'');
+  b.textContent=SUBJ[s]; b.onclick=()=>{state.subject=s; sync('subjectChips','subject',subs); render();};
+  sc.appendChild(b);
+});
+function sync(elId,key,arr){
+  [...document.getElementById(elId).children].forEach((c,i)=>
+    c.classList.toggle('on', (key==='subject'?arr[i]:arr[i])===state[key]));
+}
+
+// ---- helpers
+const inD = r => state.district==='All' || r.district_name===state.district;
+const inS = r => r.subject_id===state.subject;
+
+function render(){ renderKPIs(); renderTrend(); renderMix(); renderDrill(); renderRisk(); }
+
+// ---- KPIs (recomputed from drill for current filter)
+function renderKPIs(){
+  const rows = DATA.drill.filter(r=>inD(r)&&inS(r));
+  const tot = rows.reduce((a,r)=>a+r.n,0);
+  const prof = rows.reduce((a,r)=>a+r.pct_proficient*r.n,0)/tot;
+  const risk = rows.reduce((a,r)=>a+r.pct_at_risk*r.n,0)/tot;
+  // growth flags
+  const gf = DATA.growth_flags.filter(g=>inS(g)&&(state.district==='All'||g.district_name===state.district));
+  const gtot = gf.reduce((a,g)=>a+g.n,0);
+  const strong = gf.filter(g=>g.growth_flag==='Strong Growth').reduce((a,g)=>a+g.n,0);
+  const ks=[
+    {v:prof.toFixed(1)+'%', k:'Proficient (Spring)', d:'At / Above Benchmark', warn:false},
+    {v:risk.toFixed(1)+'%', k:'At-risk (Spring)', d:'Intervention tiers', warn:true},
+    {v:(strong/gtot*100).toFixed(0)+'%', k:'Strong growth', d:'≥30 pt scaled gain', warn:false},
+    {v:tot.toLocaleString(), k:'Assessments', d:SUBJ[state.subject]+' · Spring', warn:false},
+  ];
+  document.getElementById('kpis').innerHTML = ks.map(x=>
+    `<div class="kpi ${x.warn?'warn':''}"><div class="v">${x.v}</div>
+     <div class="k">${x.k}</div><div class="d">${x.d}</div></div>`).join('');
+}
+
+// ---- trend line
+function renderTrend(){
+  const order={Fall:1,Winter:2,Spring:3};
+  let rows = DATA.trends.filter(inS).filter(r=>state.district==='All'?true:r.district_name===state.district);
+  // average across districts when All
+  const byW={};
+  rows.forEach(r=>{(byW[r.window_label] ||= []).push(r.pct_proficient);});
+  const pts = Object.keys(byW).sort((a,b)=>order[a]-order[b])
+    .map(w=>({w, v: byW[w].reduce((a,b)=>a+b,0)/byW[w].length}));
+  const W=560,H=300,P={l:46,r:18,t:18,b:42};
+  const x=i=>P.l+i*((W-P.l-P.r)/(pts.length-1));
+  const y=v=>P.t+(1-(v-40)/(100-40))*(H-P.t-P.b);
+  let g='';
+  for(let v=40;v<=100;v+=15){g+=`<line class="gridline" x1="${P.l}" y1="${y(v)}" x2="${W-P.r}" y2="${y(v)}"/>
+    <text class="axis" x="${P.l-8}" y="${y(v)+4}" text-anchor="end">${v}%</text>`;}
+  const line=pts.map((p,i)=>`${i?'L':'M'}${x(i)},${y(p.v)}`).join(' ');
+  const area=`M${x(0)},${y(40)} `+pts.map((p,i)=>`L${x(i)},${y(p.v)}`).join(' ')+` L${x(pts.length-1)},${y(40)} Z`;
+  const dots=pts.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.v)}" r="5" fill="var(--accent)" stroke="#fff" stroke-width="2"/>
+    <text class="axis" x="${x(i)}" y="${y(p.v)-12}" text-anchor="middle" style="fill:var(--ink);font-weight:600">${p.v.toFixed(1)}%</text>
+    <text class="axis" x="${x(i)}" y="${H-16}" text-anchor="middle">${p.w}</text>`).join('');
+  document.getElementById('trendChart').innerHTML =
+    g+`<path d="${area}" fill="var(--accent-soft)" opacity=".55"/>
+       <path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>`+dots;
+}
+
+// ---- benchmark mix stacked bars
+function renderMix(){
+  const order={Fall:1,Winter:2,Spring:3};
+  let rows = DATA.benchmark_mix.filter(inS).filter(r=>state.district==='All'?true:r.district_name===state.district);
+  const byW={};
+  rows.forEach(r=>{(byW[r.window_label] ||= {})[r.benchmark_category]=
+      (byW[r.window_label][r.benchmark_category]||0)+r.n;});
+  const wins=Object.keys(byW).sort((a,b)=>order[a]-order[b]);
+  const W=480,H=300,P={l:18,r:18,t:14,b:42};
+  const bw=64, gap=(W-P.l-P.r-bw*wins.length)/(wins.length+1);
+  let out='';
+  wins.forEach((w,i)=>{
+    const x=P.l+gap+i*(bw+gap);
+    const tot=BANDS.reduce((a,b)=>a+(byW[w][b]||0),0);
+    let yy=P.t;
+    const ch=H-P.t-P.b;
+    BANDS.forEach(b=>{
+      const h=(byW[w][b]||0)/tot*ch;
+      if(h>0){out+=`<rect x="${x}" y="${yy}" width="${bw}" height="${h}" fill="${BANDC[b]}"/>`;
+        if(h>16)out+=`<text x="${x+bw/2}" y="${yy+h/2+4}" text-anchor="middle" style="font:600 11px IBM Plex Mono;fill:#fff">${((byW[w][b]||0)/tot*100).toFixed(0)}</text>`;
+        yy+=h;}
+    });
+    out+=`<text class="axis" x="${x+bw/2}" y="${H-16}" text-anchor="middle">${w}</text>`;
+  });
+  document.getElementById('mixChart').innerHTML=out;
+}
+
+// ---- drill-down district -> school -> grade
+function renderDrill(){
+  const rows = DATA.drill.filter(inS).filter(inD);
+  // nest
+  const tree={};
+  rows.forEach(r=>{
+    (tree[r.district_name] ||= {n:0,p:0,schools:{}});
+    const d=tree[r.district_name]; d.n+=r.n; d.p+=r.pct_proficient*r.n;
+    (d.schools[r.school_name] ||= {n:0,p:0,grades:[]});
+    const s=d.schools[r.school_name]; s.n+=r.n; s.p+=r.pct_proficient*r.n;
+    s.grades.push(r);
+  });
+  const el=document.getElementById('drill'); el.innerHTML='';
+  const gradeOrd=g=>g==='K'?0:+g;
+  Object.keys(tree).sort().forEach((dn,di)=>{
+    const d=tree[dn]; const dp=d.p/d.n;
+    el.appendChild(rowEl(0,`D${di}`,dn,dp,d.n,true));
+    Object.keys(d.schools).sort().forEach((sn,si)=>{
+      const s=d.schools[sn]; const sp=s.p/s.n;
+      const sr=rowEl(1,`D${di}-S${si}`,sn,sp,s.n,true,`D${di}`); el.appendChild(sr);
+      s.grades.sort((a,b)=>gradeOrd(a.grade_label)-gradeOrd(b.grade_label)).forEach(g=>{
+        el.appendChild(rowEl(2,`D${di}-S${si}-G${g.grade_label}`,'Grade '+g.grade_label,
+          g.pct_proficient,g.n,false,`D${di}-S${si}`));
+      });
+    });
+  });
+  // collapse below level 0
+  el.querySelectorAll('.lvl-1,.lvl-2').forEach(r=>r.classList.add('hidden'));
+}
+function rowEl(lvl,id,label,pct,n,expandable,parent){
+  const r=document.createElement('div');
+  r.className=`row lvl-${lvl}`; r.dataset.id=id; if(parent)r.dataset.parent=parent;
+  r.dataset.expandable=expandable; r.dataset.open='false';
+  const twig = lvl<2 ? `<span class="twig">▸</span>` : `<span class="twig"></span>`;
+  r.innerHTML=`<div>${twig}${label}</div>
+    <div class="pill">${pct.toFixed(1)}%</div>
+    <div class="bar"><span style="width:${Math.min(pct,100)}%"></span></div>`;
+  if(expandable) r.onclick=()=>toggle(id,r);
+  return r;
+}
+function toggle(id,r){
+  const open=r.dataset.open==='true'; r.dataset.open=(!open).toString();
+  const tw=r.querySelector('.twig'); if(tw)tw.textContent=open?'▸':'▾';
+  document.querySelectorAll(`[data-parent="${id}"]`).forEach(c=>{
+    if(open){ // closing: hide descendants and collapse them
+      c.classList.add('hidden');
+      if(c.dataset.expandable==='true'&&c.dataset.open==='true'){toggle(c.dataset.id,c);}
+    } else { c.classList.remove('hidden'); }
+  });
+}
+
+// ---- at-risk roster
+function renderRisk(){
+  let rows = DATA.at_risk_top.filter(inS).filter(inD)
+    .sort((a,b)=>b.priority_score-a.priority_score).slice(0,12);
+  const el=document.getElementById('risk');
+  if(!rows.length){el.innerHTML='<p class="sub">No at-risk students for this filter.</p>';return;}
+  el.innerHTML=rows.map((r,i)=>{
+    const tags=[r.is_ell?'ELL':'',r.has_iep?'IEP':'',r.is_frl?'FRL':''].filter(Boolean)
+      .map(t=>`<span class="tag">${t}</span>`).join('');
+    const bandCls=r.benchmark_category==='Urgent Intervention'?'Urgent':'Inter';
+    const bandTxt=r.benchmark_category==='Urgent Intervention'?'Urgent':'Interv.';
+    return `<div class="risk-row">
+      <div class="rank">${i+1}</div>
+      <div><span class="nm">${r.student_name}</span>${tags}
+        <div class="sub2">${r.school_name} · Gr ${r.grade_label} · Δ ${r.scaled_growth}</div></div>
+      <div class="band ${bandCls}">${bandTxt}</div>
+      <div class="sub2">PR ${r.spring_pr} · ${r.growth_flag}</div>
+      <div class="prio">${r.priority_score}</div>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('foot').innerHTML =
+  'Synthetic data — no real student records. Modeled with a dbt star schema (dim_student · dim_school · '+
+  'dim_subject · dim_window · fct_assessment_results) and curated rpt_* marts; '+
+  'all referential-integrity & range tests passing. Built to be portable from DuckDB to Snowflake.';
+
+render();
+</script>

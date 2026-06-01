@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw benchmark-assessment extracts (synthetic). One CSV per entity."
+    meta:
+      loaded_by: "generate_data.py"
+    tables:
+      - name: students
+        description: "One row per enrolled student with demographic flags."
+        columns:
+          - name: student_id
+            tests: [unique, not_null]
+      - name: schools
+        description: "School master with district and level."
+        columns:
+          - name: school_id
+            tests: [unique, not_null]
+      - name: assessment_results
+        description: "One row per student / subject / benchmark window."
+        columns:
+          - name: result_id
+            tests: [unique, not_null]
+          - name: student_id
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw', 'students')
+                  field: student_id
+      - name: benchmark_windows
+        description: "Fall / Winter / Spring testing windows."
+      - name: subjects
+        description: "Reading and Math."
