@@ -6,10 +6,37 @@ with **data-quality tests**, and surfaced through an interactive **dashboard**
 that lets stakeholders drill from district → school → grade → student.
 
 The dataset is **synthetic** (generated locally, no real student records) but is
-shaped like a Renaissance-style benchmark program — three windows per year
+shaped like a NYC DoE trimester benchmark program — three windows per year
 (Fall / Winter / Spring), scaled scores, percentile ranks, and benchmark
 categories (At/Above Benchmark, On Watch, Intervention, Urgent Intervention).
+---
+## Adapting to production (real) data
 
+This repo runs on **synthetic** data on purpose. Real K–12 assessment records
+are FERPA-protected education records — names, scores, and especially the
+IEP / ELL / free-and-reduced-lunch flags are sensitive — so they must never be
+committed to a repository (public *or* private). The synthetic dataset exists
+so the modeling, testing, and dashboards can be shown publicly without exposing
+anyone.
+
+To run the same project against real data inside a sanctioned environment
+(a school/district warehouse), the engineering grows in a few predictable ways:
+
+- **Swap the sources.** Point dbt's `sources` at the real Star / eSD / SIS
+  extracts landing in Snowflake instead of the CSVs. The staging layer is where
+  real-world schema differences get absorbed.
+- **Harden for messiness.** Real data has nulls, duplicate enrollments,
+  mid-year school transfers, late-arriving results, and drifting column names.
+  The `not_null` / `unique` / `relationships` tests start catching genuine
+  issues rather than confirming a clean demo.
+- **Track history with snapshots.** Students change grade, school, and support
+  flags over time — model `dim_student` as a slowly-changing dimension via dbt
+  snapshots so results can be read "as of" a given window.
+- **Go incremental.** Convert `fct_assessment_results` to an incremental model
+  once the history spans many windows and years, so runs stay fast.
+- **Control access.** Use warehouse roles so student-level rows are restricted
+  while dashboards expose only aggregates, and enforce minimum cell sizes in
+  reporting marts to prevent re-identification.
 ---
 
 ## What it demonstrates
